@@ -14,12 +14,12 @@ The user system will allow users to register an account, and log in to previousl
 This will be the first thing the user sees when using the "App" for the first time and the login would be cached for an easier user experience
 
 ### Emotion Grid:
-A visual tool that prompts users to identify their current emotional state using images and labels, such as "self-doubt" to help them better understand and express their feelings. 
+A visual tool that prompts users to identify their current emotional state using images and labels, such as "self-doubt," to help them better understand and express their feelings. 
 
 When the user presses on a image like "Stressed" they would be sent to a different page corresponding to the emotion picked.
 
 ### Coaching:
-This is the page the user ends up at after picking a Emotion where they can read about the emotion and anwser some questions related to the emotion.
+This is the page the user ends up at after picking a emotion where they can read about the emotion and answer some questions related to the emotion. The answer would be saved in their journal.
 
 ### Psychoeducation:
 This section helps users understand the connection between their emotions and physical sensations, guiding them to recognize where in their body they may experience different feelings.
