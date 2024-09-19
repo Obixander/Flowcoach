@@ -26,7 +26,7 @@
 1. The user needs to be able to read about the emotion the picked
 2. The user needs to be able to answer some questions related to the emotion
 3. The user needs to be asked about how they would what to feel instead using a set list of choices
-4. After the user answers how to would what to feel, they need to be sent to a different page based on their answer
+4. After the user answers how they want to feel, they need to be sent to a different page based on their answer
 5. The user's answers needs to be able save their answer to their journal
 
 ### Subsystem 04: Psychoeducation
