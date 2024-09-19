@@ -18,16 +18,16 @@
 ### Subsystem 02: Emotion Panel
 ---
 1. The user needs to se a grid of "Cards" (Images with text) after they login
-2. The user needs to be able to press on a "card" where they will be sent to the Coaching page that relates to the pressed "card"
+2. The user needs to be able to press on a "card" where they will be sent to the Q&A page that relates to the pressed "card"
 3. The user needs to be able to scroll on the emotion panel
 
-### Subsystem 03: Emotional Coaching 
+### Subsystem 03: Q&A
 ---
 1. The user needs to be able to read about the emotion the picked
 2. The user needs to be able to answer some questions related to the emotion
-3. The user needs to be asked about how they would what to feel instead using a set list of choices
+3. The user needs to be asked about how they would want to feel instead using a set list of choices
 4. After the user answers how they want to feel, they need to be sent to a different page based on their answer
-5. The user's answers needs to be able save their answer to their journal
+5. The user's answers needs to be saved to their journal automatically
 
 ### Subsystem 04: Psychoeducation
 ---
@@ -49,9 +49,20 @@
 ### Subsystem 07: Administator System
 ---
 1. The Admin needs to be able to access a separate website for administrating the "App"
-1. The Admin needs to be able to add new content to both the emotion panel and bodyflow
-2. The admin needs to be able to remove content from both the emotion panel and bodyflow
-3. The Admin needs to be able to Change content from both the emotion panel and bodyflow
+2. The Admin needs to be able to add new content to the emotion panel
+3. The admin needs to be able to add new content to a Q&A page
+4. The admin needs to be able to add new content to the bodyflow page
+5. The admin needs to be able to add new content to a Psychoeducation page
+---
+6. The admin needs to be able to remove content from the emotion panel
+7. The admin needs to be able to remove content from a Q&A page
+8. The admin needs to be able to remove content from the bodyflow page
+9. The admin needs to be able to remove content from a Psychoeducation page
+---
+10. The Admin needs to be able to change content from the emotion panel
+11. The admin needs to be able to change c ontent from a Q&A page
+12. The Admin needs to be able to change content from the bodyflow page
+13. The admin needs to be able to change content from a Psychoeducation page
 
 ### Subsystem 08: Payment System
 ---
