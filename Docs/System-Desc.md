@@ -13,7 +13,7 @@ Flowcoach aims to help women and girls navigate their emotions, build self-confi
 The user system will allow users to register an account, and log in to previously created accounts.
 This will be the first thing the user sees when using the "App" for the first time and the login would be cached for an easier user experience
 
-### Emotion Grid:
+### Emotion Panel:
 A visual tool that prompts users to identify their current emotional state using images and labels, such as "self-doubt," to help them better understand and express their feelings. 
 
 When the user presses on a image like "Stressed" they would be sent to a different page corresponding to the emotion picked.
