@@ -55,5 +55,6 @@
 
 ### Subsystem 08: Payment System
 ---
-1. Add the design layout for the payment system
-2. There will be no payment system in this prototype
+1. The user needs to be able to go to the payment page and back to the main page
+2. The payment page needs to be made after its design
+3. There will be no payment system as this is a prototype
