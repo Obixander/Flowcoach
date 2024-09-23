@@ -6,7 +6,7 @@
 
 ### Subsystem 01: User/Login System
 ---
-1. The user needs to se a screen where they choose between login and sign up
+1. The user needs to see a screen where they choose between login and sign up
 1. The user needs to be able to create an account using an email and password.
 1. Check if the users email contains @ and is atleast 2 characters long
 2. The user's email needs to be check if its a valid email with a one time activation code sent to them.
@@ -17,7 +17,7 @@
 
 ### Subsystem 02: Emotion Panel
 ---
-1. The user needs to se a grid of "Cards" (Images with text) after they login
+1. The user needs to see a grid of "Cards" (Images with text) after they login
 2. The user needs to be able to press on a "card" where they will be sent to the Q&A page that relates to the pressed "card"
 3. The user needs to be able to scroll on the emotion panel
 
@@ -31,7 +31,7 @@
 
 ### Subsystem 04: Psychoeducation
 ---
-1. The user needs to se a grid of "Cards" (Images with text) after they press on BodyFlow
+1. The user needs to see a grid of "Cards" (Images with text) after they press on BodyFlow
 2. The user needs to be able to pick an "Sensation" to read about
 3. The user needs to be able to go back to bodyflow's main page
 
@@ -60,7 +60,7 @@
 9. The admin needs to be able to remove content from a Psychoeducation page
 ---
 10. The Admin needs to be able to change content from the emotion panel
-11. The admin needs to be able to change c ontent from a Q&A page
+11. The admin needs to be able to change content from a Q&A page
 12. The Admin needs to be able to change content from the bodyflow page
 13. The admin needs to be able to change content from a Psychoeducation page
 
