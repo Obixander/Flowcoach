@@ -10,7 +10,12 @@ namespace FlowCoach.Entities
     {
         private int emotionCardId;
         private string title;
-        private int pathId; // this is the id in the database for the Q&A page to load 
-        //add images
+        private string imageUrl;
+        private int coachingId; //this is the id used to find where to send the user after selecting a emotion
+
+        public int EmotionCardId { get => emotionCardId; set => emotionCardId = value; }
+        public string Title { get => title; set => title = value; }
+        public string ImageUrl { get => imageUrl; set => imageUrl = value; }
+        public int CoachingId { get => coachingId; set => coachingId = value; }
     }
 }
