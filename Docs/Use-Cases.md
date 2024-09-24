@@ -53,18 +53,21 @@
 
 # 3. Emotion Panel
 ### Actor: User
-### Description: The user uses the emotion panel to pick what emotion they're feeling
+### Description: The user interacts with the emotion panel to select how they are feeling.
 ## Preconditions:
-* App Installed
-* User logged in
-* Internet Access
+* App is installed
+* User is logged in
+* Internet access is available
 ## Basic Flow:
-1. The user scrolls through the emotion panel until they find the emotion they're feeling
-2. the user clicks/presses on the card of the emotion and gets sent to the coaching/Q&A page
+1. The user scrolls through the emotion panel to browse different emotions.
+2. The user selects an emotion by clicking/pressing on the corresponding card.
+3. The user is redirected to the coaching/Q&A page for the selected emotion.
 ## Alternativ Flow:
 1. 
 ## Exceptions:
-1. 
+1. No Internet Access: If the app requires an internet connection to load the emotions, an error message should be displayed (e.g., "No internet connection available. Please try again later").
+
+2. Empty Emotion Panel: If the emotion panel fails to load, an error message should be displayed, and the user should be prompted to refresh or retry.
 
 ---
 <br>
@@ -72,22 +75,22 @@
 
 # 4. Q&A
 ### Actor: User
-### Description: the user going through the Q&A page after selecting the emotion they're feeling 
+### Description: The user interacts with the Q&A page after selecting an emotion.
 ## Preconditions:
-* App Installed
-* User logged in
-* has used flowcoach to pick an emotion
-* Internet Access
+* App is installed
+* User is logged in
+* The user has selected an emotion from the emotion panel
+* Internet access is available
 ## Basic Flow:
 1. The user reads/can read about the emotion they're feeling
 2. The user answers/can answer some question about the emotion
-3. The user's answers get saved to their journal
-4. The user can then input what they want to do about the emotion based on a preselected list of answers
-5. The user then gets sent to a different page about their selected emotion they want to feel
+3. The system automatically saves the user’s answers in their journal.
+4. The user selects from a pre-defined list how they would like to feel instead of the current emotion.
+5. Based on their selection, the user is redirected to a page that corresponds to the desired emotional state.
 ## Alternativ Flow:
-1. 
+1. User skips answering some questions: If the user chooses not to answer every question, the system should still allow them to proceed and save partial responses.
 ## Exceptions:
-1. 
+1. No Internet Access: If the journal cannot be saved due to lack of internet access, the system should display an error message and provide an option to retry later.
 
 ---
 <br>
