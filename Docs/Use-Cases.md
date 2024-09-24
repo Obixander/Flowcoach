@@ -49,3 +49,46 @@
 ---
 <br>
 <br>
+
+
+# 3. Emotion Panel
+### Actor: User
+### Description: The user uses the emotion panel to pick what emotion they're feeling
+## Preconditions:
+* App Installed
+* User logged in
+* Internet Access
+## Basic Flow:
+1. The user scrolls through the emotion panel until they find the emotion they're feeling
+2. the user clicks/presses on the card of the emotion and gets sent to the coaching/Q&A page
+## Alternativ Flow:
+1. 
+## Exceptions:
+1. 
+
+---
+<br>
+<br>
+
+# 4. Q&A
+### Actor: User
+### Description: the user going through the Q&A page after selecting the emotion they're feeling 
+## Preconditions:
+* App Installed
+* User logged in
+* has used flowcoach to pick an emotion
+* Internet Access
+## Basic Flow:
+1. The user reads/can read about the emotion they're feeling
+2. The user answers/can answer some question about the emotion
+3. The user's answers get saved to their journal
+4. The user can then input what they want to do about the emotion based on a preselected list of answers
+5. The user then gets sent to a different page about their selected emotion they want to feel
+## Alternativ Flow:
+1. 
+## Exceptions:
+1. 
+
+---
+<br>
+<br>
