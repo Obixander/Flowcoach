@@ -1,4 +1,4 @@
-namespace FlowCoach.App.Data
+namespace Flowcoach.App.Data
 {
     public class WeatherForecast
     {

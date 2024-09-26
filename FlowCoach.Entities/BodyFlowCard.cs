@@ -16,6 +16,6 @@ namespace FlowCoach.Entities
         public int BodyFlowCardId { get => bodyFlowCardId; set => bodyFlowCardId = value; }
         public string Title { get => title; set => title = value; }
         public string ImageUrl { get => imageUrl; set => imageUrl = value; }
-        public int ArticleId { get => articleId; set => articleId = value; }
+        public int BodyFlowArticleId { get => articleId; set => articleId = value; }
     }
 }

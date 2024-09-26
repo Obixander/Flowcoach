@@ -36,6 +36,5 @@ As a user, I want my answers to be saved to my journal automatically so that I c
 ## 12:
 As a user, I want to see a grid of sensation cards when I enter the BodyFlow section so that I can explore how emotions relate to physical sensations.
 
-## 13:
-As a user, I want to be able to choose a sensation to learn about its connection to my emotional state.
 
+ 
