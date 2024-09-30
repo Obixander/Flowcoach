@@ -14,20 +14,38 @@
 4. The user needs to be able to sign up for an subscription to flowcoach
 5. The user needs to be able to sign in to their account using email and password
 6. The user's login needs to be cached for ease of use
+7. After the user has logged in the need to be sent to the flowcoach page
 
-### Subsystem 02: Emotion Panel
+### Subsystem 02: Flow Coach
 ---
-1. The user needs to see a grid of "Cards" (Images with text) after they login
-2. The user needs to be able to press on a "card" where they will be sent to the Q&A page that relates to the pressed "card"
-3. The user needs to be able to scroll on the emotion panel
+1. The user needs to see a grid of "cards"
+2. The user needs to be able to press on a card to go the page relating to the card
+3. The user needs to be able to scroll on the page
 
-### Subsystem 03: Q&A
+### Subsystem 02.1 Flowcoach Negative
+---
+1. The user needs to see a grid of cards
+2. The user needs to be able to press on a card to go to the Q&A page relating to the card
+3. The user needs to be able to scroll on the page
+
+### Subsystem 02.2 Flowcoach Positiv
+---
+1. The user needs to see a grid of cards
+2. The user needs to be able to press on a card to go to the Page relating to the card
+3. The user needs to be able to scroll on the page
+
+### Subsystem 03.1: Q&A
 ---
 1. The user needs to be able to read about the emotion the picked
-2. The user needs to be able to answer some questions related to the emotion
-3. The user needs to be asked about how they would want to feel instead using a set list of choices
-4. After the user answers how they want to feel, they need to be sent to a different page based on their answer
-5. The user's answers needs to be saved to their journal automatically
+2. The user needs to be able to answer some questions related to the emotion divided into categories (NØGLE)
+3. The user's answers in the categories of Ø,L and E need to be able to be saved to their journal
+4. 
+
+### Subsystem 03.2 Positiv
+---
+1. The user needs to be able to play a sound file
+2. The user needs to be able to answer questions
+3. The user needs to be able to save their answer's to their flowjournal
 
 ### Subsystem 04: Psychoeducation
 ---
@@ -38,6 +56,7 @@
 ### Subsystem 05: Journal
 ---
 1. The user needs to be able to access their journal
+2. The journal needs to be divided into categories based where the question was answered
 2. In the user's journal they need to be able reread their saved answers
 
 ### Subsystem 06: Push Notifications
