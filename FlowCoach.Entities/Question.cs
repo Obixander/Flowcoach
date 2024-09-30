@@ -11,9 +11,12 @@ namespace FlowCoach.Entities
         private int questionId;
         private string questionText;
         private QuestionType questionType;
+        private bool isSaveAble;
 
         public int QuestionId { get => questionId; set => questionId = value; }
         public string QuestionText { get => questionText; set => questionText = value; }
+        public bool IsSaveAble { get => isSaveAble; set => isSaveAble = value; }
+        internal QuestionType QuestionType { get => questionType; set => questionType = value; }
     }
 
     enum QuestionType

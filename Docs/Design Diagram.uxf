@@ -5,7 +5,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>342</x>
+      <x>360</x>
       <y>1044</y>
       <w>27</w>
       <h>27</h>
@@ -16,7 +16,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>765</x>
+      <x>783</x>
       <y>603</y>
       <w>207</w>
       <h>99</h>
@@ -33,7 +33,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1143</x>
+      <x>1161</x>
       <y>0</y>
       <w>90</w>
       <h>27</h>
@@ -44,37 +44,37 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>324</x>
+      <x>342</x>
       <y>306</y>
       <w>198</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>EmotionCard
 -
-
+- coachId : int
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>351</x>
       <y>459</y>
-      <w>162</w>
+      <w>198</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>Coaching
 -
 - id : int
 - title : string
-- Content : list&lt;string&gt;
-- Questions : list&lt;Question&gt;</panel_attributes>
+- content : list&lt;string&gt;
+- questions : list&lt;Question&gt;</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>585</x>
       <y>603</y>
       <w>153</w>
       <h>90</h>
@@ -90,20 +90,21 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>828</x>
       <y>306</y>
       <w>207</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>BodyFlowCard
 -
+- bodyflowArticleId : int
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>351</x>
+      <x>369</x>
       <y>396</y>
       <w>27</w>
       <h>27</h>
@@ -114,7 +115,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>360</x>
       <y>603</y>
       <w>180</w>
       <h>81</h>
@@ -124,13 +125,13 @@
 - id : int
 - question : string
 - category : QuestionCategory
-- IsSaveable : bool</panel_attributes>
+- isSaveable : bool</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
+      <x>432</x>
       <y>540</y>
       <w>27</w>
       <h>81</h>
@@ -142,7 +143,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>513</x>
+      <x>531</x>
       <y>630</y>
       <w>72</w>
       <h>27</h>
@@ -153,14 +154,15 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>801</x>
+      <x>828</x>
       <y>459</y>
-      <w>225</w>
+      <w>216</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>BodyFlowArcticle
 -
 - id : int
+- title : string
 - content :  list&lt;string&gt;
 - images : list&lt;string&gt;
 </panel_attributes>
@@ -169,7 +171,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>909</x>
+      <x>936</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -180,7 +182,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>711</x>
+      <x>729</x>
       <y>630</y>
       <w>72</w>
       <h>27</h>
@@ -191,7 +193,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>72</x>
+      <x>99</x>
       <y>306</y>
       <w>198</w>
       <h>99</h>
@@ -199,52 +201,52 @@
     <panel_attributes>FlowcoachCard
 -
 - description : string
-</panel_attributes>
+- path : string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>450</x>
+      <x>468</x>
       <y>153</y>
       <w>198</w>
-      <h>90</h>
+      <h>99</h>
     </coordinates>
     <panel_attributes>Card
 -
 - id : int
 - image : string
 - title : string
-- path : string
+
 </panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>171</x>
-      <y>234</y>
-      <w>405</w>
-      <h>90</h>
+      <x>198</x>
+      <y>243</y>
+      <w>396</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>430.0;10.0;430.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
+    <additional_attributes>420.0;10.0;420.0;40.0;10.0;40.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
-      <y>234</y>
+      <x>432</x>
+      <y>243</y>
       <w>162</w>
-      <h>90</h>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>160.0;10.0;160.0;50.0;10.0;50.0;10.0;80.0</additional_attributes>
+    <additional_attributes>160.0;10.0;160.0;40.0;10.0;40.0;10.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>414</x>
+      <x>432</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -255,7 +257,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>387</x>
+      <x>360</x>
       <y>747</y>
       <w>189</w>
       <h>126</h>
@@ -274,36 +276,37 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>423</x>
+      <x>432</x>
       <y>675</y>
-      <w>90</w>
+      <w>72</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>lt=&lt;.&gt;
 &lt;&lt;Enum&gt;&gt;</panel_attributes>
-    <additional_attributes>40.0;80.0;10.0;10.0</additional_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>234</y>
+      <x>567</x>
+      <y>243</y>
       <w>144</w>
-      <h>90</h>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;140.0;50.0;140.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;140.0;40.0;140.0;70.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>567</x>
+      <x>585</x>
       <y>306</y>
       <w>207</w>
       <h>99</h>
     </coordinates>
     <panel_attributes>SelfcareCard
 -
+- selfcareArticleId : int
 
 </panel_attributes>
     <additional_attributes/>
@@ -311,18 +314,18 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>549</x>
-      <y>234</y>
-      <w>378</w>
-      <h>90</h>
+      <x>567</x>
+      <y>243</y>
+      <w>387</w>
+      <h>81</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;50.0;400.0;50.0;400.0;80.0</additional_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0;410.0;40.0;410.0;70.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>666</x>
+      <x>684</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -333,18 +336,30 @@ FutureProof
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>558</x>
+      <x>585</x>
       <y>459</y>
-      <w>225</w>
+      <w>216</w>
       <h>90</h>
     </coordinates>
     <panel_attributes>SelfCareArticle
 -
 - id : int
 - content :  list&lt;string&gt;
-- SoundFile : string
-- Question : list&lt;question&gt;
+- soundFile : string
+- q	uestion : list&lt;question&gt;
 </panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>432</x>
+      <y>540</y>
+      <w>279</w>
+      <h>81</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;50.0;290.0;50.0;290.0;10.0</additional_attributes>
   </element>
 </diagram>

@@ -48,11 +48,12 @@ namespace FlowCoach.DataAccess.Migrations
 
             modelBuilder.Entity("FlowCoach.Entities.BodyFlowCard", b =>
                 {
-                    b.Property<int>("BodyFlowCardId")
+                    b.Property<int>("CardId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("BodyFlowCardId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("BodyFlowCardId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardId"));
 
                     b.Property<int>("BodyFlowArticleId")
                         .HasColumnType("int");
@@ -65,7 +66,9 @@ namespace FlowCoach.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("BodyFlowCardId");
+                    b.HasKey("CardId");
+
+                    b.HasIndex("BodyFlowArticleId");
 
                     b.ToTable("BodyFlowCards");
                 });
@@ -93,11 +96,12 @@ namespace FlowCoach.DataAccess.Migrations
 
             modelBuilder.Entity("FlowCoach.Entities.EmotionCard", b =>
                 {
-                    b.Property<int>("EmotionCardId")
+                    b.Property<int>("CardId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("EmotionCardId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmotionCardId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardId"));
 
                     b.Property<int>("CoachingId")
                         .HasColumnType("int");
@@ -110,7 +114,9 @@ namespace FlowCoach.DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("EmotionCardId");
+                    b.HasKey("CardId");
+
+                    b.HasIndex("CoachingId");
 
                     b.ToTable("EmotionCards");
                 });
@@ -156,15 +162,75 @@ namespace FlowCoach.DataAccess.Migrations
                     b.Property<int?>("CoachingId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsSaveAble")
+                        .HasColumnType("bit");
+
                     b.Property<string>("QuestionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("SelfcareArticleId")
+                        .HasColumnType("int");
 
                     b.HasKey("QuestionId");
 
                     b.HasIndex("CoachingId");
 
+                    b.HasIndex("SelfcareArticleId");
+
                     b.ToTable("Questions");
+                });
+
+            modelBuilder.Entity("FlowCoach.Entities.SelfCareCard", b =>
+                {
+                    b.Property<int>("CardId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("SelfCareCardId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CardId"));
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SelfCareArticleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("CardId");
+
+                    b.HasIndex("SelfCareArticleId");
+
+                    b.ToTable("SelfcareCards");
+                });
+
+            modelBuilder.Entity("FlowCoach.Entities.SelfcareArticle", b =>
+                {
+                    b.Property<int>("SelfcareArticleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SelfcareArticleId"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SoundfileUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("SelfcareArticleId");
+
+                    b.ToTable("SelfcareArticles");
                 });
 
             modelBuilder.Entity("FlowCoach.Entities.User", b =>
@@ -192,6 +258,28 @@ namespace FlowCoach.DataAccess.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("FlowCoach.Entities.BodyFlowCard", b =>
+                {
+                    b.HasOne("FlowCoach.Entities.BodyFlowArticle", "BodyFlowArticle")
+                        .WithMany()
+                        .HasForeignKey("BodyFlowArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BodyFlowArticle");
+                });
+
+            modelBuilder.Entity("FlowCoach.Entities.EmotionCard", b =>
+                {
+                    b.HasOne("FlowCoach.Entities.Coaching", "Coaching")
+                        .WithMany()
+                        .HasForeignKey("CoachingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Coaching");
+                });
+
             modelBuilder.Entity("FlowCoach.Entities.JournalEntry", b =>
                 {
                     b.HasOne("FlowCoach.Entities.Question", "Question")
@@ -212,9 +300,29 @@ namespace FlowCoach.DataAccess.Migrations
                     b.HasOne("FlowCoach.Entities.Coaching", null)
                         .WithMany("Questions")
                         .HasForeignKey("CoachingId");
+
+                    b.HasOne("FlowCoach.Entities.SelfcareArticle", null)
+                        .WithMany("Questions")
+                        .HasForeignKey("SelfcareArticleId");
+                });
+
+            modelBuilder.Entity("FlowCoach.Entities.SelfCareCard", b =>
+                {
+                    b.HasOne("FlowCoach.Entities.SelfcareArticle", "SelfcareArticle")
+                        .WithMany()
+                        .HasForeignKey("SelfCareArticleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("SelfcareArticle");
                 });
 
             modelBuilder.Entity("FlowCoach.Entities.Coaching", b =>
+                {
+                    b.Navigation("Questions");
+                });
+
+            modelBuilder.Entity("FlowCoach.Entities.SelfcareArticle", b =>
                 {
                     b.Navigation("Questions");
                 });

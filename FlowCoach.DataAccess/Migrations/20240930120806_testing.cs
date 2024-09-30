@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace FlowCoach.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class fixedforeignKey : Migration
+    public partial class testing : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -27,21 +27,6 @@ namespace FlowCoach.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BodyFlowCards",
-                columns: table => new
-                {
-                    BodyFlowCardId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BodyFlowArticleId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BodyFlowCards", x => x.BodyFlowCardId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Coachings",
                 columns: table => new
                 {
@@ -56,18 +41,18 @@ namespace FlowCoach.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmotionCards",
+                name: "SelfcareArticles",
                 columns: table => new
                 {
-                    EmotionCardId = table.Column<int>(type: "int", nullable: false)
+                    SelfcareArticleId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CoachingId = table.Column<int>(type: "int", nullable: false)
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SoundfileUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_EmotionCards", x => x.EmotionCardId);
+                    table.PrimaryKey("PK_SelfcareArticles", x => x.SelfcareArticleId);
                 });
 
             migrationBuilder.CreateTable(
@@ -86,13 +71,57 @@ namespace FlowCoach.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "BodyFlowCards",
+                columns: table => new
+                {
+                    BodyFlowCardId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BodyFlowArticleId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_BodyFlowCards", x => x.BodyFlowCardId);
+                    table.ForeignKey(
+                        name: "FK_BodyFlowCards_BodyFlowArticles_BodyFlowArticleId",
+                        column: x => x.BodyFlowArticleId,
+                        principalTable: "BodyFlowArticles",
+                        principalColumn: "BodyFlowArticleId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmotionCards",
+                columns: table => new
+                {
+                    EmotionCardId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CoachingId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmotionCards", x => x.EmotionCardId);
+                    table.ForeignKey(
+                        name: "FK_EmotionCards_Coachings_CoachingId",
+                        column: x => x.CoachingId,
+                        principalTable: "Coachings",
+                        principalColumn: "CoachingId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Questions",
                 columns: table => new
                 {
                     QuestionId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     QuestionText = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CoachingId = table.Column<int>(type: "int", nullable: true)
+                    IsSaveAble = table.Column<bool>(type: "bit", nullable: false),
+                    CoachingId = table.Column<int>(type: "int", nullable: true),
+                    SelfcareArticleId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -102,6 +131,32 @@ namespace FlowCoach.DataAccess.Migrations
                         column: x => x.CoachingId,
                         principalTable: "Coachings",
                         principalColumn: "CoachingId");
+                    table.ForeignKey(
+                        name: "FK_Questions_SelfcareArticles_SelfcareArticleId",
+                        column: x => x.SelfcareArticleId,
+                        principalTable: "SelfcareArticles",
+                        principalColumn: "SelfcareArticleId");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SelfcareCards",
+                columns: table => new
+                {
+                    SelfCareCardId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    SelfCareArticleId = table.Column<int>(type: "int", nullable: false),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SelfcareCards", x => x.SelfCareCardId);
+                    table.ForeignKey(
+                        name: "FK_SelfcareCards_SelfcareArticles_SelfCareArticleId",
+                        column: x => x.SelfCareArticleId,
+                        principalTable: "SelfcareArticles",
+                        principalColumn: "SelfcareArticleId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -132,6 +187,16 @@ namespace FlowCoach.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_BodyFlowCards_BodyFlowArticleId",
+                table: "BodyFlowCards",
+                column: "BodyFlowArticleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EmotionCards_CoachingId",
+                table: "EmotionCards",
+                column: "CoachingId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_JournalEntries_QuestionId",
                 table: "JournalEntries",
                 column: "QuestionId");
@@ -145,14 +210,21 @@ namespace FlowCoach.DataAccess.Migrations
                 name: "IX_Questions_CoachingId",
                 table: "Questions",
                 column: "CoachingId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Questions_SelfcareArticleId",
+                table: "Questions",
+                column: "SelfcareArticleId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SelfcareCards_SelfCareArticleId",
+                table: "SelfcareCards",
+                column: "SelfCareArticleId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "BodyFlowArticles");
-
             migrationBuilder.DropTable(
                 name: "BodyFlowCards");
 
@@ -163,6 +235,12 @@ namespace FlowCoach.DataAccess.Migrations
                 name: "JournalEntries");
 
             migrationBuilder.DropTable(
+                name: "SelfcareCards");
+
+            migrationBuilder.DropTable(
+                name: "BodyFlowArticles");
+
+            migrationBuilder.DropTable(
                 name: "Questions");
 
             migrationBuilder.DropTable(
@@ -170,6 +248,9 @@ namespace FlowCoach.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "Coachings");
+
+            migrationBuilder.DropTable(
+                name: "SelfcareArticles");
         }
     }
 }
