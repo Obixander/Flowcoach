@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace FlowCoach.DataAccess
 {
-    public class FlowCoachContext : DbContext
+    public class DataContext : DbContext
     {
-        public FlowCoachContext(DbContextOptions<FlowCoachContext> options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
             
         }

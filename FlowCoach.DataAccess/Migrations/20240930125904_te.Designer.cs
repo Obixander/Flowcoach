@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlowCoach.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240930120806_testing")]
-    partial class testing
+    [Migration("20240930125904_te")]
+    partial class te
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

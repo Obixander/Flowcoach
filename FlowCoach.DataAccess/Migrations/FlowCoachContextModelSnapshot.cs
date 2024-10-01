@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FlowCoach.DataAccess.Migrations
 {
-    [DbContext(typeof(FlowCoachContext))]
+    [DbContext(typeof(DataContext))]
     partial class FlowCoachContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

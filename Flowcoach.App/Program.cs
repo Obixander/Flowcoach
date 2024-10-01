@@ -16,7 +16,7 @@ namespace Flowcoach.App
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
-            builder.Services.AddDbContext<FlowCoachContext>(options =>
+            builder.Services.AddDbContext<DataContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("FlowcoachConnection")
             ));
 
