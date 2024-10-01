@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.Entities", "FlowC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.DataAccess", "FlowCoach.DataAccess\FlowCoach.DataAccess.csproj", "{7390158C-8BBF-44AA-A266-115E7057DD31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flowcoach.App", "Flowcoach.App\Flowcoach.App.csproj", "{AB14F630-8502-4D04-92C1-EC3A3722AEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flowcoach.App", "Flowcoach.App\Flowcoach.App.csproj", "{AB14F630-8502-4D04-92C1-EC3A3722AEEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

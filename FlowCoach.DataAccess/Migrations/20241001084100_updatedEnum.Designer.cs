@@ -4,6 +4,7 @@ using FlowCoach.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FlowCoach.DataAccess.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class FlowCoachContextModelSnapshot : ModelSnapshot
+    [Migration("20241001084100_updatedEnum")]
+    partial class updatedEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,9 +201,6 @@ namespace FlowCoach.DataAccess.Migrations
                     b.Property<string>("QuestionText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("QuestionType")
-                        .HasColumnType("int");
 
                     b.Property<int?>("SelfcareArticleId")
                         .HasColumnType("int");

@@ -4,11 +4,11 @@
             <FontAwesomeIcon Icon="@FontAwesome.User" Color="white" Size="17.5px"/>
             <p class="NavbarText" >MYFLOW</p>    <!--Change p to be links to the different pages-->
         </div>
-        <div class="NavbarElement" @onclick="NavigateToEmotionPanel">
+        <div class="NavbarElement" @onclick="NavigateToFlowCoach">
             <FontAwesomeIcon Icon="@FontAwesome.Table" Color="white" Size="17.5px" />
             <p class="NavbarText">FLOWCOACH</p>
         </div>
-        <div class="NavbarElement">
+        <div class="NavbarElement" @onclick="NavigateToBodyFlow">
             <FontAwesomeIcon Icon="@FontAwesome.Eye" Color="white" Size="17.5px" />
             <p class="NavbarText">BODYFLOW</p>
         </div>
@@ -24,8 +24,19 @@
 @code {
 
 
-    private void NavigateToEmotionPanel()
+   
+
+    private void NavigateToFlowCoach()
     {
-        NavManager.NavigateTo("/emotionpanel");
+        NavManager.NavigateTo("/flowcoach");
     }
+
+    private void NavigateToBodyFlow()
+    {
+        NavManager.NavigateTo("/bodyflow");
+    }
+
+    
+
+
 }

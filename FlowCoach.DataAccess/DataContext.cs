@@ -20,6 +20,7 @@ namespace FlowCoach.DataAccess
         public DbSet<BodyFlowArticle> BodyFlowArticles { get; set; } = null;
         public DbSet<SelfcareArticle> SelfcareArticles { get; set; } = null;
         public DbSet<SelfCareCard> SelfcareCards { get; set; } = null;
+        public DbSet<FlowCoachCard> FlowCoachCards { get; set; } = null;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,6 +39,10 @@ namespace FlowCoach.DataAccess
                 .HasColumnName("SelfCareCardId");
             modelBuilder.Entity<SelfCareCard>().HasKey(c => c.CardId);
 
+            modelBuilder.Entity<FlowCoachCard>()
+                .Property(c => c.CardId)
+                .HasColumnName("FlowCoachCardId");
+            modelBuilder.Entity<FlowCoachCard>().HasKey(c => c.CardId);
         }
 
 

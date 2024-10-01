@@ -16,10 +16,10 @@ namespace FlowCoach.Entities
         public int QuestionId { get => questionId; set => questionId = value; }
         public string QuestionText { get => questionText; set => questionText = value; }
         public bool IsSaveAble { get => isSaveAble; set => isSaveAble = value; }
-        internal QuestionType QuestionType { get => questionType; set => questionType = value; }
+        public QuestionType QuestionType { get => questionType; set => questionType = value; }
     }
 
-    enum QuestionType
+    public enum QuestionType
     {
         Current,
         Wanted,
