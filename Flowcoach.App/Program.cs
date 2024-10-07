@@ -1,5 +1,4 @@
 using Flowcoach.App.Data;
-using FlowCoach.DataAccess;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +15,7 @@ namespace Flowcoach.App
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<WeatherForecastService>();
-            builder.Services.AddDbContext<DataContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("FlowcoachConnection")
-            ));
+            
 
             var app = builder.Build();
 
@@ -38,6 +35,7 @@ namespace Flowcoach.App
 
             app.MapBlazorHub();
             app.MapFallbackToPage("/_Host");
+
 
             app.Run();
         }

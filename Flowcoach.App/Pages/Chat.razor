@@ -1,0 +1,49 @@
+﻿@page "/chat"
+
+<h3>Chat</h3>
+
+<input @bind="InputName" type="text" id="name" name="Username" placeholder="Enter your username here" />
+<input @bind="InputValue" type="text" id="message" name="message" placeholder="Message Goes here"/>
+
+<button @onclick="SendTesting">Send Message</button>
+
+
+@code {
+    private string InputName = "";
+    private string InputValue = "";
+    private bool isConnected = false;  // To track if SignalR connection is established
+
+    [Inject]
+    private IJSRuntime jsRuntime { get; set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Start the connection only on first render
+            await jsRuntime.InvokeVoidAsync("connectionManager.startConnection", "/chatHub");
+            isConnected = true;
+
+            // Optionally, handle receiving messages from the hub
+            await jsRuntime.InvokeVoidAsync("connectionManager.onReceiveMessage",
+                DotNetObjectReference.Create(this), nameof(ReceiveMessage));
+        }
+    }
+
+    private async Task SendTesting()
+    {
+        if (isConnected)
+        {
+            await jsRuntime.InvokeVoidAsync("connectionManager.sendMessage", InputName, InputValue);
+            InputValue = string.Empty;  // Clear the message input after sending
+        }
+    }
+
+    // Optional: handle receiving messages from the hub
+    [JSInvokable]
+    public void ReceiveMessage(string user, string message)
+    {
+        Console.WriteLine($"{user}: {message}");
+    }
+
+}

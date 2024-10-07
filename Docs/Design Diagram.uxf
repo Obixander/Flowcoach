@@ -5,7 +5,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>360</x>
+      <x>351</x>
       <y>1044</y>
       <w>27</w>
       <h>27</h>
@@ -16,7 +16,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>783</x>
+      <x>774</x>
       <y>603</y>
       <w>207</w>
       <h>99</h>
@@ -33,7 +33,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1161</x>
+      <x>1152</x>
       <y>0</y>
       <w>90</w>
       <h>27</h>
@@ -44,7 +44,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>342</x>
+      <x>333</x>
       <y>306</y>
       <w>198</w>
       <h>99</h>
@@ -58,7 +58,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>351</x>
+      <x>342</x>
       <y>459</y>
       <w>198</w>
       <h>90</h>
@@ -74,7 +74,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
+      <x>576</x>
       <y>603</y>
       <w>153</w>
       <h>90</h>
@@ -90,7 +90,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
+      <x>819</x>
       <y>306</y>
       <w>207</w>
       <h>99</h>
@@ -104,7 +104,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>369</x>
+      <x>360</x>
       <y>396</y>
       <w>27</w>
       <h>27</h>
@@ -115,7 +115,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>351</x>
       <y>603</y>
       <w>180</w>
       <h>81</h>
@@ -131,7 +131,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
+      <x>423</x>
       <y>540</y>
       <w>27</w>
       <h>81</h>
@@ -143,7 +143,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>531</x>
+      <x>522</x>
       <y>630</y>
       <w>72</w>
       <h>27</h>
@@ -154,7 +154,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>828</x>
+      <x>819</x>
       <y>459</y>
       <w>216</w>
       <h>90</h>
@@ -171,7 +171,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>936</x>
+      <x>927</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -182,7 +182,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>729</x>
+      <x>720</x>
       <y>630</y>
       <w>72</w>
       <h>27</h>
@@ -193,7 +193,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>99</x>
+      <x>90</x>
       <y>306</y>
       <w>198</w>
       <h>99</h>
@@ -207,7 +207,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>468</x>
+      <x>459</x>
       <y>153</y>
       <w>198</w>
       <h>99</h>
@@ -224,7 +224,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>198</x>
+      <x>189</x>
       <y>243</y>
       <w>396</w>
       <h>81</h>
@@ -235,7 +235,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
+      <x>423</x>
       <y>243</y>
       <w>162</w>
       <h>81</h>
@@ -246,7 +246,7 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
+      <x>423</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -257,7 +257,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>360</x>
+      <x>351</x>
       <y>747</y>
       <w>189</w>
       <h>126</h>
@@ -276,7 +276,7 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
+      <x>423</x>
       <y>675</y>
       <w>72</w>
       <h>90</h>
@@ -288,7 +288,7 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>558</x>
       <y>243</y>
       <w>144</w>
       <h>81</h>
@@ -299,7 +299,7 @@ FutureProof
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
+      <x>576</x>
       <y>306</y>
       <w>207</w>
       <h>99</h>
@@ -314,7 +314,7 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>567</x>
+      <x>558</x>
       <y>243</y>
       <w>387</w>
       <h>81</h>
@@ -325,7 +325,7 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>684</x>
+      <x>675</x>
       <y>396</y>
       <w>27</w>
       <h>81</h>
@@ -336,7 +336,7 @@ FutureProof
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>585</x>
+      <x>576</x>
       <y>459</y>
       <w>216</w>
       <h>90</h>
@@ -353,7 +353,7 @@ FutureProof
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>432</x>
+      <x>423</x>
       <y>540</y>
       <w>279</w>
       <h>81</h>
