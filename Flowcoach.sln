@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowCoach.Services", "FlowC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowCoach.Assets", "FlowCoach.Assets\FlowCoach.Assets.csproj", "{37F26860-1287-4D88-84CE-EB5DD888277B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowCoach.Components", "FlowCoach.Components\FlowCoach.Components.csproj", "{D561105B-9569-4A89-8393-F0A513C366BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComponentLibrary", "FlowCoach.Components\ComponentLibrary.csproj", "{D561105B-9569-4A89-8393-F0A513C366BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlowCoach.Hubs", "FlowCoach.Hubs\FlowCoach.Hubs.csproj", "{6FA37783-F345-425B-A33C-BC1F2D261698}"
 EndProject
