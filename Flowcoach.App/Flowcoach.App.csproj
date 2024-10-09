@@ -27,7 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FlowCoach.Assets\FlowCoach.Assets.csproj" />
     <ProjectReference Include="..\FlowCoach.Components\ComponentLibrary.csproj" />
     <ProjectReference Include="..\FlowCoach.Components\FlowCoach.Components.csproj" />
     <ProjectReference Include="..\FlowCoach.Entities\FlowCoach.Entities.csproj" />

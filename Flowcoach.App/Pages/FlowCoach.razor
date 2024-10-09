@@ -1,13 +1,13 @@
 ﻿@page "/flowcoach"
+
 <h3>FlowCoach</h3>
+
 
 
 @inject NavigationManager NavManager
 @code {
+    private List<FlowCoachCard> FlowCoachCards = new List<FlowCoachCard>();
 
-    private void testing()
-    {
-        NavManager.NavigateTo("/flowcoach/emotionpanel");
-    }
+   
 }
  
