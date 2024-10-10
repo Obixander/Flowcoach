@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlowCoach.DataAccess.Interfaces
 {
-    public interface IQuestionRepository
+    public interface IQuestionRepository : IGenericRepository<Question>
     {
         List<Question> GetFirstFiveQuestions(QuestionType questionType);
         List<Question> GetNextFiveQuestions(int lastQuestionId, QuestionType questionType);

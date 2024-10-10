@@ -12,7 +12,7 @@ namespace FlowCoach.DataAccess.Interfaces
         void Update(T entity);
         void Delete(T entity);
         void DeleteAt(int id);
-        IEnumerable<T> GetAll();
-        T GetBy(int id);
+        Task<IEnumerable<T>> GetAll();
+        Task<T> GetBy(int id);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using FlowCoach.DataAccess.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,12 @@ namespace FlowCoach.DataAccess.Repositories
     {
         //i want to do this all async but i dont know if it makes much sense
 
-        public void Add(T entity)
+        public async void Add(T entity)
         {
             try
             {
-                context.Add(entity);
-                context.SaveChanges();
+                await context.AddAsync(entity);
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -24,26 +25,25 @@ namespace FlowCoach.DataAccess.Repositories
             }
         }
 
-        public void Delete(T entity)
+        public async void Delete(T entity)
         {
             try
             {
                 context.Remove(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-
         }
 
-        public void DeleteAt(int id)
+        public async void DeleteAt(int id)
         {
             try
             {
                 context.Remove(id);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
@@ -51,11 +51,11 @@ namespace FlowCoach.DataAccess.Repositories
             }
         }
 
-        public IEnumerable<T> GetAll()
+        public async Task<IEnumerable<T>> GetAll()
         {
             try
             {
-                return context.Set<T>().ToList();
+                return await context.Set<T>().AsNoTracking().ToListAsync(); //no tracking as the is returns to the client and is not needed to be tracked
             }
             catch (Exception ex)
             {
@@ -63,11 +63,11 @@ namespace FlowCoach.DataAccess.Repositories
             }
         }
 
-        public T GetBy(int id)
+        public async Task<T> GetBy(int id)
         {
             try
             {
-                return context.Find<T>(id) ?? throw new Exception("Entity not found");
+                return await context.FindAsync<T>(id) ?? throw new Exception();
             }
             catch (Exception ex)
             {
@@ -76,12 +76,12 @@ namespace FlowCoach.DataAccess.Repositories
 
         }
 
-        public void Update(T entity)
+        public async void Update(T entity)
         {
             try
             {
                 context.Update(entity);
-                context.SaveChanges();
+                await context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
