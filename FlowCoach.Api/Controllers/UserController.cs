@@ -14,7 +14,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                userRepository.Add(entity);
+               await userRepository.Add(entity);
             }
             catch
             {
@@ -26,7 +26,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-               userRepository.Update(entity);
+                await userRepository.Update(entity);
             }
             catch
             {
@@ -38,7 +38,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                userRepository.Delete(entity);
+                await userRepository.Delete(entity);
             }
             catch
             {
@@ -51,7 +51,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                userRepository.DeleteAt(id);
+                await userRepository.DeleteAt(id);
             }
             catch
             {
@@ -60,7 +60,7 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpGet]
         [Route(nameof(GetAll))]
-        public async ActionResult<Task<IEnumerable<User>>> GetAll()
+        public async Task<ActionResult<IEnumerable<User>>> GetAll()
         {
             try
             {
@@ -73,7 +73,7 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpGet]
         [Route(nameof(GetBy))]
-        public async Task<ActionResult<List<Question>>> GetBy(int id)
+        public async Task<ActionResult<List<User>>> GetBy(int id)
         {
             try
             {

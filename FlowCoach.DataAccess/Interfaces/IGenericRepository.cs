@@ -8,10 +8,10 @@ namespace FlowCoach.DataAccess.Interfaces
 {
     public interface IGenericRepository<T>
     {
-        void Add(T entity);
-        void Update(T entity);
-        void Delete(T entity);
-        void DeleteAt(int id);
+        Task Add(T entity);
+        Task Update(T entity);
+        Task Delete(T entity);
+        Task DeleteAt(int id);
         Task<IEnumerable<T>> GetAll();
         Task<T> GetBy(int id);
     }
