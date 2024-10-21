@@ -1,5 +1,7 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
-@namespace FlowCoach.App.Pages
+
+@namespace FlowCoach.UserFrontend.Pages
+
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 <!DOCTYPE html>
@@ -14,8 +16,10 @@
     <component type="typeof(HeadOutlet)" render-mode="ServerPrerendered" />
 </head>
 <body class="dark text-white">
+
     @RenderBody()
 
     <script src="_framework/blazor.server.js"></script>
 </body>
 </html>
+

@@ -1,0 +1,46 @@
+﻿@page "/"
+@inject NavigationManager navManager
+@using FlowCoach.Components
+
+<PageTitle>FlowCoach</PageTitle>
+
+<div class="Header">
+    <h1>Selection</h1>
+</div>
+
+    @foreach(var card in flowCoachCards)
+    {
+        <Card Title="@card.Title" RedirectPath = "@card.Path"/>
+       
+    }
+
+
+
+
+
+
+@code {
+        public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>();
+
+        protected override void OnInitialized()
+        {
+            flowCoachCards.Add(new FlowCoachCard
+            {
+                CardId = 1,
+                Title = "Emotion Panel",
+                Path = "/emotionPanel",
+                Description = "This is the description of the Emotion Panel"
+            });
+            flowCoachCards.Add(new FlowCoachCard
+            {
+                CardId = 2,
+                Title = "Selfcare Panel",
+                Path = "/selfcare",
+                Description = "This is the description of the selfcare Panel"
+            });
+        }
+
+
+}
+
+

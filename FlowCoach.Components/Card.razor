@@ -1,0 +1,30 @@
+﻿@using Microsoft.AspNetCore.Components
+
+<div @onclick="Redirect">
+    <div>
+        <h3>@Title</h3>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Image { get; set; } = string.Empty;
+
+    [Parameter]
+    public string RedirectPath { get; set; } = string.Empty;
+
+    [Parameter]
+    public string Title { get; set; } = string.Empty;
+
+
+    [Inject]
+    private NavigationManager NavigationManager { get; set; } = default!;
+
+    private void Redirect()
+    {
+        if (!string.IsNullOrEmpty(RedirectPath))
+        {
+            NavigationManager.NavigateTo(RedirectPath);
+        }
+    }
+}
