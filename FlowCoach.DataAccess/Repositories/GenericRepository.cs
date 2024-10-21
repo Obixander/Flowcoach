@@ -19,7 +19,7 @@ namespace FlowCoach.DataAccess.Repositories
                 await context.AddAsync(entity);
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -32,7 +32,7 @@ namespace FlowCoach.DataAccess.Repositories
                 context.Remove(entity);
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -45,7 +45,7 @@ namespace FlowCoach.DataAccess.Repositories
                 context.Remove(id);
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -57,7 +57,7 @@ namespace FlowCoach.DataAccess.Repositories
             {
                 return await context.Set<T>().AsNoTracking().ToListAsync(); //no tracking as the is returns to the client and is not needed to be tracked
             }
-            catch (Exception ex)
+            catch 
             {
                 throw;
             }
@@ -69,7 +69,7 @@ namespace FlowCoach.DataAccess.Repositories
             {
                 return await context.FindAsync<T>(id) ?? throw new Exception();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -83,7 +83,7 @@ namespace FlowCoach.DataAccess.Repositories
                 context.Update(entity);
                 await context.SaveChangesAsync();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

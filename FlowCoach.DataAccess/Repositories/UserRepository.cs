@@ -1,5 +1,6 @@
 ﻿using FlowCoach.DataAccess.Interfaces;
 using FlowCoach.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,13 +15,12 @@ namespace FlowCoach.DataAccess.Repositories
         {
             try
             {
-                if (context.Users.Any(u => u.Email == user.Email && u.Password == user.Password))
-                {
-                    return true;
-                }
-                return false;
+                bool userExists = await context.Users
+                .AnyAsync(u => u.Email == user.Email && u.Password == u.Password);
+
+                return userExists;
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }

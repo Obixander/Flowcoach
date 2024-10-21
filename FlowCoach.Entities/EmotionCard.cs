@@ -10,6 +10,12 @@ namespace FlowCoach.Entities
     {
         private int coachingId; //this is the id used to find where to send the user after selecting a emotion
         private Coaching coaching;
+
+        public EmotionCard(Coaching coaching)
+        {
+            Coaching = coaching;
+        }
+
         public int CoachingId { get => coachingId; set => coachingId = value; }
         public Coaching Coaching { get => coaching; set => coaching = value; }
     }

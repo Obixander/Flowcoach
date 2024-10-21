@@ -17,7 +17,7 @@ namespace FlowCoach.DataAccess.Repositories
             {
                 return await context.Questions.Where(q => q.QuestionType == questionType).AsNoTracking().ToListAsync();
             }
-            catch (Exception ex)
+            catch
             {
                 throw;
             }
@@ -29,7 +29,7 @@ namespace FlowCoach.DataAccess.Repositories
             {
                 return await context.Questions.Where(q => q.QuestionType == questionType).AsNoTracking().Take(5).ToListAsync();
             }
-            catch (Exception ex)
+            catch 
             {
                 throw;
             }
@@ -46,7 +46,7 @@ namespace FlowCoach.DataAccess.Repositories
                     .Take(5)
                     .ToListAsync();
             }
-            catch (Exception ex)
+            catch 
             {
                 throw;  // Rethrow without losing the stack trace
             }

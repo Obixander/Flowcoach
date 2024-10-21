@@ -1,9 +1,9 @@
-using Flowcoach.App.Data;
+using FlowCoach.App.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.EntityFrameworkCore;
 
-namespace Flowcoach.App
+namespace FlowCoach.App
 {
     public class Program
     {

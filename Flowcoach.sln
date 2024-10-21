@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.Entities", "FlowC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.DataAccess", "FlowCoach.DataAccess\FlowCoach.DataAccess.csproj", "{7390158C-8BBF-44AA-A266-115E7057DD31}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flowcoach.App", "Flowcoach.App\Flowcoach.App.csproj", "{AB14F630-8502-4D04-92C1-EC3A3722AEEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.App", "Flowcoach.App\FlowCoach.App.csproj", "{AB14F630-8502-4D04-92C1-EC3A3722AEEE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlowCoach.Services", "FlowCoach.Services\FlowCoach.Services.csproj", "{13C92C78-182D-46D9-9418-B401F8FA1CD5}"
 EndProject
