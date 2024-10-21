@@ -10,7 +10,7 @@ namespace FlowCoach.DataAccess.Repositories
 {
     public class UserRepository(DataContext context) : GenericRepository<User>(context), IUserRepository
     {
-        public bool Login(User user)
+        public async Task<bool> Login(User user)
         {
             try
             {
@@ -22,7 +22,7 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 

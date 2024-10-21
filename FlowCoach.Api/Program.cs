@@ -26,7 +26,7 @@ namespace FlowCoach.Api
             builder.Services.AddScoped<IGenericRepository<EmotionCard>, GenericRepository<EmotionCard>>();
             builder.Services.AddScoped<IGenericRepository<FlowCoachCard>, GenericRepository<FlowCoachCard>>();
             builder.Services.AddScoped<IGenericRepository<JournalEntry>, GenericRepository<JournalEntry>>();
-            builder.Services.AddScoped<IGenericRepository<SelfcareArticle>, GenericRepository<SelfcareArticle>>();
+            builder.Services.AddScoped<IGenericRepository<SelfCareArticle>, GenericRepository<SelfCareArticle>>();
             builder.Services.AddScoped<IGenericRepository<SelfCareCard>, GenericRepository<SelfCareCard>>();
 
             var app = builder.Build();

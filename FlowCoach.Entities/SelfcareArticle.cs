@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FlowCoach.Entities
 {
-    public class SelfcareArticle
+    public class SelfCareArticle
     {
         private int selfcareArticleId;
         private string title;

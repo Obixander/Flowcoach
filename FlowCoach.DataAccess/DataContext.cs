@@ -18,7 +18,7 @@ namespace FlowCoach.DataAccess
         public DbSet<EmotionCard> EmotionCards { get; set; } = null;
         public DbSet<BodyFlowCard> BodyFlowCards { get; set; } = null;
         public DbSet<BodyFlowArticle> BodyFlowArticles { get; set; } = null;
-        public DbSet<SelfcareArticle> SelfcareArticles { get; set; } = null;
+        public DbSet<SelfCareArticle> SelfcareArticles { get; set; } = null;
         public DbSet<SelfCareCard> SelfcareCards { get; set; } = null;
         public DbSet<FlowCoachCard> FlowCoachCards { get; set; } = null;
 

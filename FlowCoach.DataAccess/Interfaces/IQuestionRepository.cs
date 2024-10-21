@@ -9,9 +9,9 @@ namespace FlowCoach.DataAccess.Interfaces
 {
     public interface IQuestionRepository : IGenericRepository<Question>
     {
-        List<Question> GetFirstFiveQuestions(QuestionType questionType);
-        List<Question> GetNextFiveQuestions(int lastQuestionId, QuestionType questionType);
-        List<Question> GetAllQuestionsByType(QuestionType questionType);
+        Task<IEnumerable<Question>> GetFirstFiveQuestions(QuestionType questionType);
+        Task<IEnumerable<Question>> GetNextFiveQuestions(int lastQuestionId, QuestionType questionType);
+        Task<IEnumerable<Question>> GetAllQuestionsByType(QuestionType questionType);
         
     }
 }

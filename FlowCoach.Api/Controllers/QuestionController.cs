@@ -61,7 +61,7 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpGet]
         [Route(nameof(GetAll))]
-        public async ActionResult<Task<IEnumerable<Question>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Question>>> GetAll()
         {
             try
             {

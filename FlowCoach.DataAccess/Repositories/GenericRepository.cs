@@ -12,7 +12,7 @@ namespace FlowCoach.DataAccess.Repositories
     {
         //i want to do this all async but i dont know if it makes much sense
 
-        public async void Add(T entity)
+        public async Task Add(T entity)
         {
             try
             {
@@ -21,11 +21,11 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
-        public async void Delete(T entity)
+        public async Task Delete(T entity)
         {
             try
             {
@@ -34,11 +34,11 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
-        public async void DeleteAt(int id)
+        public async Task DeleteAt(int id)
         {
             try
             {
@@ -47,7 +47,7 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -59,7 +59,7 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -71,12 +71,12 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
 
         }
 
-        public async void Update(T entity)
+        public async Task Update(T entity)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace FlowCoach.DataAccess.Repositories
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw;
             }
         }
     }
