@@ -3,7 +3,7 @@
 @using FlowCoach.Components
 
 <PageTitle>FlowCoach</PageTitle>
-<HeaderTitle Title="@title" BackUrl="" />
+
 
 
 <div id="BodyContainer">
@@ -19,12 +19,14 @@
     
 
 @code {
-        public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>();
-
-        public string title = "Selection";
+    public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>();
+    [CascadingParameter] public string title { get; set; } = "Testing";
+    [CascadingParameter] public string BackUrl { get; set; } = "/test";
 
         protected override void OnInitialized()
         {
+            
+
             flowCoachCards.Add(new FlowCoachCard
             {
                 CardId = 1,

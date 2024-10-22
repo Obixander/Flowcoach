@@ -2,23 +2,33 @@
 
 <PageTitle>FlowCoach.UserFrontend</PageTitle>
 
-<div class="page">
-   <header>
-       
-   </header>
+<CascadingValue Value="title">
+    <CascadingValue Value="BackUrl">
+        <div class="page">
+            <header>
+                <HeaderTitle Title="@title" BackUrl="@BackUrl" />
+            </header>
+            <main>
+                <div class="top-row px-4">
+                </div>
 
-    <main>
-        <div class="top-row px-4">
-            
+                <article class="">
+                    @Body
+                </article>
+            </main>
+
+            <footer class="NavBar">
+                <NavBar />
+            </footer>
+
         </div>
+    </CascadingValue>
+</CascadingValue>
+@code {
+    [Parameter]
+    public string title { get; set; } = string.Empty;
 
-        <article class="content px-1">
-            @Body
-        </article>
-    </main>
+    [Parameter]
+    public string BackUrl { get; set; } = string.Empty;
+}
 
-     <footer class="NavBar">
-        <NavBar  />
-    </footer>
-
-</div>

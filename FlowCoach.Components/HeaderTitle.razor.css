@@ -1,14 +1,18 @@
 ﻿.HeaderTitle {
     display: flex;
+    justify-content: center;
     color: white;
+    width: 100%;
+    position: relative;
+    background-color: #6B5264;
+    
 }
-.HeaderTitle div {
-    width: 33%;
-}
-.HeaderTitle div i {
-    font-size: 2rem;
-    text-align: center;
-}
-.HeaderTitle div h1 {
-    text-align: center;
-}
+
+    .HeaderTitle i {
+        font-size: 2rem;
+        text-align: center;
+        position: absolute;
+        left: 5px;
+    }
+
+   
