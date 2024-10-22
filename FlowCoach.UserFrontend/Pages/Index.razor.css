@@ -1,5 +1,13 @@
-﻿.Body {
-    width: 300px;
-    height: 300px;
+﻿#BodyContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    
+}
 
+.Header {
+    color: white;
+    text-align: center;
 }

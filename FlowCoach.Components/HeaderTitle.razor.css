@@ -1,0 +1,14 @@
+﻿.HeaderTitle {
+    display: flex;
+    color: white;
+}
+.HeaderTitle div {
+    width: 33%;
+}
+.HeaderTitle div i {
+    font-size: 2rem;
+    text-align: center;
+}
+.HeaderTitle div h1 {
+    text-align: center;
+}

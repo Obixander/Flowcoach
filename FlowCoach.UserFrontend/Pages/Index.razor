@@ -3,24 +3,25 @@
 @using FlowCoach.Components
 
 <PageTitle>FlowCoach</PageTitle>
+<HeaderTitle Title="@title" BackUrl="" />
 
-<div class="Header">
-    <h1>Selection</h1>
-</div>
 
-    @foreach(var card in flowCoachCards)
+<div id="BodyContainer">
+    @foreach (var card in flowCoachCards)
     {
-        <Card Title="@card.Title" RedirectPath = "@card.Path"/>
-       
+        <FlowCoachCardComponent Title="@card.Title"
+                                Path="@card.Path"
+                                Image="@card.ImageUrl"
+                                Description="@card.Description"
+                                />
     }
-
-
-
-
-
+</div>
+    
 
 @code {
         public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>();
+
+        public string title = "Selection";
 
         protected override void OnInitialized()
         {
@@ -29,14 +30,24 @@
                 CardId = 1,
                 Title = "Emotion Panel",
                 Path = "/emotionPanel",
-                Description = "This is the description of the Emotion Panel"
+                Description = "This is the description of the Emotion Panel",
+                ImageUrl = @"Images/Stressed.jfif"
             });
             flowCoachCards.Add(new FlowCoachCard
             {
                 CardId = 2,
                 Title = "Selfcare Panel",
                 Path = "/selfcare",
-                Description = "This is the description of the selfcare Panel"
+                Description = "This is the description of the selfcare Panel",
+                ImageUrl = @"Images/Angst.jfif"
+            });
+            flowCoachCards.Add(new FlowCoachCard
+            {
+                CardId = 3,
+                Title = "Selfcare Panel",
+                Path = "/selfcare",
+                Description = "This is the description of the selfcare Panel",
+                ImageUrl = @"Images/Angst.jfif"
             });
         }
 

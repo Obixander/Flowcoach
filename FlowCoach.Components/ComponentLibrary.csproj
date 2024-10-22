@@ -6,6 +6,17 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="FlowCoachCardComponent.razor.css" />
+    <None Remove="Header.razor.css" />
+    <None Remove="HeaderTitle.razor.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="FlowCoachCardComponent.razor.css" />
+    <Content Include="HeaderTitle.razor.css" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <SupportedPlatform Include="browser" />
