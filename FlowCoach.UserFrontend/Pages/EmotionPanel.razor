@@ -3,8 +3,69 @@
 
 <HeaderTitle Title="@title" BackUrl="@backUrl" />
 
+<div>
+    @foreach (var card in emotionCards)
+    {
+        <!--Change path to be a part of a card maybe?-->
+        <CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
+    }
+</div>
+
+
 @code {
+
+    private List<EmotionCard> emotionCards = new();
+
     public string title = "Emotion Panel";
     public string backUrl = "/";
+
+    protected override void OnInitialized()
+    {
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 1,
+                CoachingId = 1,
+                Title = "Stressed",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 2,
+                CoachingId = 2,
+                Title = "Angst",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 3,
+                CoachingId = 3,
+                Title = "Deprimeret",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 4,
+                CoachingId = 4,
+                Title = "Ikke god nok",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 5,
+                CoachingId = 5,
+                Title = "Vred",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        emotionCards.Add(new EmotionCard
+            {
+                CardId = 6,
+                CoachingId = 6,
+                Title = "Afhængig af SoMe",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+
+
+        base.OnInitialized();
+    }
 
 }

@@ -1,13 +1,11 @@
-﻿@inherits LayoutComponentBase
+﻿@using FlowCoach.UserFrontend.Data
+@inherits LayoutComponentBase
 
 <PageTitle>FlowCoach.UserFrontend</PageTitle>
 
-<CascadingValue Value="title">
-    <CascadingValue Value="BackUrl">
         <div class="page">
-            <header>
-                <HeaderTitle Title="@title" BackUrl="@BackUrl" />
-            </header>
+         
+
             <main>
                 <div class="top-row px-4">
                 </div>
@@ -22,13 +20,7 @@
             </footer>
 
         </div>
-    </CascadingValue>
-</CascadingValue>
 @code {
-    [Parameter]
-    public string title { get; set; } = string.Empty;
 
-    [Parameter]
-    public string BackUrl { get; set; } = string.Empty;
 }
 

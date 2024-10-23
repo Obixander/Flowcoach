@@ -10,13 +10,14 @@
 
 @code {
     [Parameter]
-    public string Title { get; set; } = string.Empty;
+    public string Title { get; set; }
 
     [Parameter]
-    public string BackUrl { get; set; } = string.Empty;
+    public string BackUrl { get; set; }
 
     private void NavigateBack()
     {
+
         navigationManager.NavigateTo(BackUrl);
     }
 }

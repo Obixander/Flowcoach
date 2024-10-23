@@ -1,7 +1,9 @@
 
+using FlowCoach.DataAccess;
 using FlowCoach.DataAccess.Interfaces;
 using FlowCoach.DataAccess.Repositories;
 using FlowCoach.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace FlowCoach.Api
 {
@@ -12,8 +14,9 @@ namespace FlowCoach.Api
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            builder.Services.AddDbContext<DataContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-            builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
@@ -28,6 +31,8 @@ namespace FlowCoach.Api
             builder.Services.AddScoped<IGenericRepository<JournalEntry>, GenericRepository<JournalEntry>>();
             builder.Services.AddScoped<IGenericRepository<SelfCareArticle>, GenericRepository<SelfCareArticle>>();
             builder.Services.AddScoped<IGenericRepository<SelfCareCard>, GenericRepository<SelfCareCard>>();
+
+            builder.Services.AddControllers();
 
             var app = builder.Build();
             

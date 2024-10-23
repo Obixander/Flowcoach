@@ -5,14 +5,16 @@
     width: 100%;
     position: relative;
     background-color: #6B5264;
+    height: 2.5rem;
     
 }
 
     .HeaderTitle i {
-        font-size: 2rem;
+        font-size: 1.5rem;
         text-align: center;
         position: absolute;
-        left: 5px;
+        left: 0.4rem;
+        top: 0.5rem;
     }
 
    

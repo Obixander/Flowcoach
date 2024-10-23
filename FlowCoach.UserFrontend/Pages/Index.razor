@@ -1,10 +1,8 @@
 ﻿@page "/"
 @inject NavigationManager navManager
 @using FlowCoach.Components
-
-<PageTitle>FlowCoach</PageTitle>
-
-
+<!--Change this later to the correct path and title-->
+<HeaderTitle Title="Flowcoach" BackUrl="/" />
 
 <div id="BodyContainer">
     @foreach (var card in flowCoachCards)
@@ -12,22 +10,17 @@
         <FlowCoachCardComponent Title="@card.Title"
                                 Path="@card.Path"
                                 Image="@card.ImageUrl"
-                                Description="@card.Description"
-                                />
+                                Description="@card.Description" />
     }
 </div>
-    
+
 
 @code {
-    public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>();
-    [CascadingParameter] public string title { get; set; } = "Testing";
-    [CascadingParameter] public string BackUrl { get; set; } = "/test";
+    public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>(); //this list will be used to contain the infomation from the db later
 
-        protected override void OnInitialized()
-        {
-            
-
-            flowCoachCards.Add(new FlowCoachCard
+    protected override void OnInitialized()
+    {
+        flowCoachCards.Add(new FlowCoachCard
             {
                 CardId = 1,
                 Title = "Emotion Panel",
@@ -35,7 +28,7 @@
                 Description = "This is the description of the Emotion Panel",
                 ImageUrl = @"Images/Stressed.jfif"
             });
-            flowCoachCards.Add(new FlowCoachCard
+        flowCoachCards.Add(new FlowCoachCard
             {
                 CardId = 2,
                 Title = "Selfcare Panel",
@@ -43,7 +36,7 @@
                 Description = "This is the description of the selfcare Panel",
                 ImageUrl = @"Images/Angst.jfif"
             });
-            flowCoachCards.Add(new FlowCoachCard
+        flowCoachCards.Add(new FlowCoachCard
             {
                 CardId = 3,
                 Title = "Selfcare Panel",
@@ -51,7 +44,7 @@
                 Description = "This is the description of the selfcare Panel",
                 ImageUrl = @"Images/Angst.jfif"
             });
-        }
+    }
 
 
 }

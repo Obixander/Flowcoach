@@ -1,3 +1,4 @@
+using ComponentLibrary;
 using FlowCoach.UserFrontend.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
@@ -13,8 +14,7 @@ namespace FlowCoach.UserFrontend
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<WeatherForecastService>();
-
+            builder.Services.AddSingleton<HeaderTitle>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
