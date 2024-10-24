@@ -9,50 +9,53 @@
     <hr />
 }
 
-<p class="Question-Intro">test</p>
-@foreach (var question in Emotion.Questions)
-{
-    @if (question.QuestionType == (QuestionType)0)
-    {
-        <div class="Question-Container">
-            <div class="Question" @onclick="() => Unfold(question)">
-                <p class="Question-Text">
-                    @question.QuestionText
-                </p>
-            </div>
-            @if (IsAnswerBoxVisible(question))
+        <p class="Question-Intro">@Emotion.IntroText[0]</p>
+        @foreach (var question in Emotion.Questions)
+        {
+            @if (question.QuestionType == (QuestionType)0)
             {
-                <div class="Question-AnswerBox">
-                        <input class="UserInput" @bind=question.Answer/>
+                <div class="Question-Container">
+                    <div class="Question" @onclick="() => Unfold(question)">
+                        <p class="Question-Text">
+                            @question.QuestionText
+                        </p>
+                    </div>
+                    @if (IsAnswerBoxVisible(question))
+                    {
+                        <div class="Question-AnswerBox">
+                            <input class="UserInput" @bind=question.Answer />
+                        </div>
+                    }
                 </div>
             }
-        </div>
-    }
-}
-<hr />
-<p class="Question-Intro">@Emotion.IntroText[1]</p>
-@foreach (var question in Emotion.Questions)
-{
-    @if (question.QuestionType == (QuestionType)1)
-    {
-        <div class="Question-Container">
-            <div class="Question" @onclick="() => Unfold(question)">
-                <p class="Question-Text">
-                    @question.QuestionText
-                </p>
-            </div>
-            @if (IsAnswerBoxVisible(question))
+        }
+
+        <hr />
+
+        <p class="Question-Intro">@Emotion.IntroText[1]</p>
+        @foreach (var question in Emotion.Questions)
+        {
+            @if (question.QuestionType == (QuestionType)1)
             {
-                <div class="Question-AnswerBox">
-                        <input class="UserInput" @bind=question.Answer />
+                <div class="Question-Container">
+                    <div class="Question" @onclick="() => Unfold(question)">
+                        <p class="Question-Text">
+                            @question.QuestionText
+                        </p>
+                    </div>
+                    @if (IsAnswerBoxVisible(question))
+                    {
+                        <div class="Question-AnswerBox">
+                            <input class="UserInput" @bind=question.Answer />
+                        </div>
+                    }
                 </div>
             }
-        </div>
-    }
-}
+        }
+
 
 </div>
-
+ 
 
 @code {
     [Parameter]
@@ -72,7 +75,7 @@
                 Title = "Stressed",
                 Content = new List<string>
                 {
-                    "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
                     "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck"
                 },
                 IntroText = new List<string>
