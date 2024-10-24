@@ -1,0 +1,112 @@
+﻿@page "/emotionpage/{id:int}"
+
+<HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
+
+<div id="MainContent">
+@foreach (var content in Emotion.Content)
+{
+    <p>@content</p>
+    <hr />
+}
+
+<p class="Question-Intro">test</p>
+@foreach (var question in Emotion.Questions)
+{
+    @if (question.QuestionType == (QuestionType)0)
+    {
+        <div class="Question-Container">
+            <div class="Question" @onclick="() => Unfold(question)">
+                <p class="Question-Text">
+                    @question.QuestionText
+                </p>
+            </div>
+            @if (IsAnswerBoxVisible(question))
+            {
+                <div class="Question-AnswerBox">
+                        <input class="UserInput" @bind=question.Answer/>
+                </div>
+            }
+        </div>
+    }
+}
+<hr />
+<p class="Question-Intro">@Emotion.IntroText[1]</p>
+@foreach (var question in Emotion.Questions)
+{
+    @if (question.QuestionType == (QuestionType)1)
+    {
+        <div class="Question-Container">
+            <div class="Question" @onclick="() => Unfold(question)">
+                <p class="Question-Text">
+                    @question.QuestionText
+                </p>
+            </div>
+            @if (IsAnswerBoxVisible(question))
+            {
+                <div class="Question-AnswerBox">
+                        <input class="UserInput" @bind=question.Answer />
+                </div>
+            }
+        </div>
+    }
+}
+
+</div>
+
+
+@code {
+    [Parameter]
+    public int Id { get; set; } //this is the id that will be used to get the coaching infomation
+
+    public Coaching Emotion { get; set; } //this will be used to store the coaching infomation
+
+    private Dictionary<Question, bool> visibilityMap = new();
+
+    protected override void OnInitialized()
+    {
+
+
+        Emotion = new Coaching
+            {
+                CoachingId = 1,
+                Title = "Stressed",
+                Content = new List<string>
+                {
+                    "TestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTestTest",
+                    "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck"
+                },
+                IntroText = new List<string>
+                {
+                    "This is the intro text of the stressed coaching",
+                    "This is the second intro text of the stressed coaching"
+                },
+            };
+        Emotion.Questions = new();
+        Emotion.Questions.Add(new Question { QuestionId = 1, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
+        Emotion.Questions.Add(new Question { QuestionId = 2, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
+
+        for (int i = 0; i < Emotion.Questions.Count; i++)
+        {
+            Console.WriteLine(Emotion.Questions[i].QuestionText);
+        }
+
+
+        Console.WriteLine($"Received parameter: {Id}");
+    }
+    private void Unfold(Question question)
+    {
+        if (visibilityMap.ContainsKey(question))
+        {
+            visibilityMap[question] = !visibilityMap[question];
+        }
+        else
+        {
+            visibilityMap[question] = true;
+        }
+    }
+
+    private bool IsAnswerBoxVisible(Question question)
+    {
+        return visibilityMap.ContainsKey(question) && visibilityMap[question];
+    }
+}

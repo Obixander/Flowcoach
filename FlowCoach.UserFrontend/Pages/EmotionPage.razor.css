@@ -1,0 +1,9 @@
+﻿* {
+    color: whitesmoke;
+    overflow-x: hidden;
+}
+
+#MainContent {
+    display: flex;
+    flex-direction: column;
+}

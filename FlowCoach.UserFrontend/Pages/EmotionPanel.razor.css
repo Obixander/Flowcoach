@@ -1,0 +1,15 @@
+﻿h4 {
+    color: whitesmoke;
+    text-align: center;
+    margin-top: 0.6rem;
+    margin-bottom: 0.5rem;
+}
+
+#MainContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-bottom: 3rem;
+}

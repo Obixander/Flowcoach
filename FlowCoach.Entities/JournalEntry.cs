@@ -11,12 +11,11 @@ namespace FlowCoach.Entities
     {
         private int journalEntryId;
         private Question question;
-        private string answer;
+        
         private DateOnly date;
 
         public int JournalEntryId { get => journalEntryId; set => journalEntryId = value; }
         public Question Question { get => question; set => question = value; }
-        public string Answer { get => answer; set => answer = value; }
         public DateOnly Date { get => date; set => date = value; }
     }
 }

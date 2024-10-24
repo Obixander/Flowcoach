@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="CardComponent.razor.css" />
     <None Remove="FlowCoachCardComponent.razor.css" />
     <None Remove="Header.razor.css" />
     <None Remove="HeaderTitle.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="CardComponent.razor.css" />
     <Content Include="FlowCoachCardComponent.razor.css" />
     <Content Include="HeaderTitle.razor.css" />
   </ItemGroup>

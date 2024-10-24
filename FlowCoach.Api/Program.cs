@@ -20,8 +20,10 @@ namespace FlowCoach.Api
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
             builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+
             builder.Services.AddScoped<IGenericRepository<BodyFlowArticle>, GenericRepository<BodyFlowArticle>>();
             builder.Services.AddScoped<IGenericRepository<BodyFlowCard>, GenericRepository<BodyFlowCard>>();
             builder.Services.AddScoped<IGenericRepository<Card>, GenericRepository<Card>>();

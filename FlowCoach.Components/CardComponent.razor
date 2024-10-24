@@ -2,7 +2,7 @@
 
 <div class="Card" @onclick="Redirect">
     <img src="@Image" alt="Image of flowcoach logo" />
-    <h4>@Title</h4>
+    <p>@Title</p>
 </div>
 
 @code {
@@ -16,7 +16,7 @@
     public string Title { get; set; } = string.Empty;
 
     [Parameter]
-    public int Id { get; set; } 
+    public int Id { get; set; } //id used to find the emotion to display
 
 
     [Inject]
@@ -27,7 +27,7 @@
     {
         if (!string.IsNullOrEmpty(Path))
         {
-            NavigationManager.NavigateTo(Path);
+            NavigationManager.NavigateTo($"{Path}/{Id}");
         }
     }
 }
