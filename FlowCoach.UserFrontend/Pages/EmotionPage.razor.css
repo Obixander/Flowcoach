@@ -17,3 +17,36 @@
     word-wrap: break-word;
     color: floralwhite;
 }
+
+.Question-Container {
+    background-color: #272727;
+    margin-top: 0.75rem;
+    display:flex;
+    align-content: center;
+    flex-wrap: wrap;
+    border-radius: 0.75rem;
+}
+
+.Question {
+    padding: 0.75rem;
+    width: 100%;
+}
+
+.Question-Text {
+    margin-bottom: 0;
+}
+
+.Question-AnswerBox {
+    width: 100%;
+}
+.Question-AnswerBox input {
+    width: 100%;
+    background-color: wheat;
+    color: black;
+    box-shadow: none;
+    border: none;
+}
+
+p {
+    margin-bottom: 0;
+}

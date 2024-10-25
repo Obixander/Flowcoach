@@ -80,13 +80,18 @@
                 },
                 IntroText = new List<string>
                 {
-                    "This is the intro text of the stressed coaching",
-                    "This is the second intro text of the stressed coaching"
+                    "This is the intro text of the stressed coaching question",
+                    "This is the second intro text of the stressed coaching question"
                 },
             };
         Emotion.Questions = new();
         Emotion.Questions.Add(new Question { QuestionId = 1, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 2, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
+        Emotion.Questions.Add(new Question { QuestionId = 2, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
+        Emotion.Questions.Add(new Question { QuestionId = 3, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
+        Emotion.Questions.Add(new Question { QuestionId = 4, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
+        Emotion.Questions.Add(new Question { QuestionId = 5, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
+        Emotion.Questions.Add(new Question { QuestionId = 6, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
+        Emotion.Questions.Add(new Question { QuestionId = 7, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
 
         for (int i = 0; i < Emotion.Questions.Count; i++)
         {
