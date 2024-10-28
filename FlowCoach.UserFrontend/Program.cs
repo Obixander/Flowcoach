@@ -15,6 +15,9 @@ namespace FlowCoach.UserFrontend
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton<HeaderTitle>();
+            builder.Services.AddSingleton<ChatService>();
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

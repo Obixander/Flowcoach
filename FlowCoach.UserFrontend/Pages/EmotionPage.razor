@@ -1,5 +1,6 @@
 ﻿@page "/emotionpage/{id:int}"
-
+@using FlowCoach.UserFrontend.Data
+@inject ChatService ChatService
 <HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
 
 <div id="MainContent">
@@ -31,8 +32,9 @@
             </div>
         }
 
+        @* This somehow works *@
         <div class="LoadButtonContainer">
-            @{
+            @{ 
                 var index = j;
             }
             <i class="fa-solid fa-angle-down" style="color: #ffffff;" @onclick="() => LoadMoreQuestions(index)"></i>
@@ -45,6 +47,7 @@
 
 
 @code {
+    //https://chatgpt.com/c/671f8595-cd48-8011-b263-9910069ee6e4
     [Parameter]
     public int Id { get; set; } //this is the id that will be used to get the coaching infomation
 
@@ -57,7 +60,7 @@
 
     private List<List<Question>> SortedQuestions = new();
 
-    protected override void OnInitialized()
+    protected override async void OnInitialized()
     {
         QuestionAmount.Add(3);
         QuestionAmount.Add(3);
@@ -113,6 +116,13 @@
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());
         SortQuestions(Emotion.Questions);
+
+        await ChatService.StartConnectionAsync();
+        await ChatService.SubscribeToMessages((user, message) =>
+        {
+            // Handle incoming messages
+        });
+
     }
 
     private void LoadMoreQuestions(int location)

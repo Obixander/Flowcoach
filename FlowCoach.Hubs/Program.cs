@@ -1,4 +1,6 @@
 
+using FlowCoach.Hubs.Hubs;
+
 namespace FlowCoach.Hubs
 {
     public class Program
@@ -10,9 +12,21 @@ namespace FlowCoach.Hubs
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddSignalR();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowBlazorClient", builder =>
+                {
+                    builder.WithOrigins("https://localhost:7239/") // Replace with Blazor app URL
+                           .AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowCredentials();
+                });
+            });
 
             var app = builder.Build();
 
@@ -27,8 +41,9 @@ namespace FlowCoach.Hubs
 
             app.UseAuthorization();
 
-
+            app.UseCors("AllowBlazorClient");
             app.MapControllers();
+            app.MapHub<Chathub>("/chathub"); // Set up the SignalR Hub endpoint
 
             app.Run();
         }
