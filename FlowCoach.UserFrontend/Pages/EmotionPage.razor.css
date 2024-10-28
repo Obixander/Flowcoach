@@ -10,6 +10,7 @@
     padding-left: 0.5rem;
     padding-right: 0.5rem;
     padding-top: 0.25rem;
+    padding-bottom: 4rem;
 }
 
 #MainContent p {
@@ -41,7 +42,6 @@
 }
 .Question-AnswerBox input {
     width: 100%;
-    background-color: wheat;
     color: black;
     box-shadow: none;
     border: none;
@@ -49,4 +49,11 @@
 
 p {
     margin-bottom: 0;
+}
+
+.LoadButtonContainer {
+    width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 0.75rem;
 }

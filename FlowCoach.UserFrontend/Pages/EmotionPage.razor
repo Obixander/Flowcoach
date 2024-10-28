@@ -3,59 +3,46 @@
 <HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
 
 <div id="MainContent">
-@foreach (var content in Emotion.Content)
-{
-    <p>@content</p>
-    <hr />
-}
+    @foreach (var content in Emotion.Content)
+    {
+        <p>@content</p>
+        <hr />
+    }
 
-        <p class="Question-Intro">@Emotion.IntroText[0]</p>
-        @foreach (var question in Emotion.Questions)
+    @for (int j = 0; j <= 4; j++)
+    {
+
+        <p class="Question-Intro">@Emotion.IntroText[j]</p>
+        @foreach (var question in SortedQuestions[j].Take(QuestionAmount[j]))
         {
-            @if (question.QuestionType == (QuestionType)0)
-            {
-                <div class="Question-Container">
-                    <div class="Question" @onclick="() => Unfold(question)">
-                        <p class="Question-Text">
-                            @question.QuestionText
-                        </p>
-                    </div>
-                    @if (IsAnswerBoxVisible(question))
-                    {
-                        <div class="Question-AnswerBox">
-                            <input class="UserInput" @bind=question.Answer />
-                        </div>
-                    }
+
+            <div class="Question-Container">
+                <div class="Question" @onclick="() => Unfold(question)">
+                    <p class="Question-Text">
+                        @question.QuestionText
+                    </p>
                 </div>
-            }
+                @if (IsAnswerBoxVisible(question))
+                {
+                    <div class="Question-AnswerBox">
+                        <input class="UserInput" @bind=question.Answer />
+                    </div>
+                }
+            </div>
         }
+
+        <div class="LoadButtonContainer">
+            @{
+                var index = j;
+            }
+            <i class="fa-solid fa-angle-down" style="color: #ffffff;" @onclick="() => LoadMoreQuestions(index)"></i>
+        </div>
 
         <hr />
-
-        <p class="Question-Intro">@Emotion.IntroText[1]</p>
-        @foreach (var question in Emotion.Questions)
-        {
-            @if (question.QuestionType == (QuestionType)1)
-            {
-                <div class="Question-Container">
-                    <div class="Question" @onclick="() => Unfold(question)">
-                        <p class="Question-Text">
-                            @question.QuestionText
-                        </p>
-                    </div>
-                    @if (IsAnswerBoxVisible(question))
-                    {
-                        <div class="Question-AnswerBox">
-                            <input class="UserInput" @bind=question.Answer />
-                        </div>
-                    }
-                </div>
-            }
-        }
-
+    }
 
 </div>
- 
+
 
 @code {
     [Parameter]
@@ -65,9 +52,18 @@
 
     private Dictionary<Question, bool> visibilityMap = new();
 
+    private List<int> QuestionAmount = new();
+    private int counter = 0;
+
+    private List<List<Question>> SortedQuestions = new();
+
     protected override void OnInitialized()
     {
-
+        QuestionAmount.Add(3);
+        QuestionAmount.Add(3);
+        QuestionAmount.Add(3);
+        QuestionAmount.Add(3);
+        QuestionAmount.Add(3);
 
         Emotion = new Coaching
             {
@@ -76,31 +72,81 @@
                 Content = new List<string>
                 {
                     "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
+                    "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck",
+                    "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck",
+                    "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck",
                     "CheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheckCheck"
                 },
                 IntroText = new List<string>
                 {
                     "This is the intro text of the stressed coaching question",
-                    "This is the second intro text of the stressed coaching question"
+                    "This is the second intro text of the stressed coaching question",
+                    "This is the third intro text of the stressed coaching question",
+                    "This is the fourth intro text of the stressed coaching question",
+                    "This is the fifth intro text of the stressed coaching question"
                 },
             };
         Emotion.Questions = new();
         Emotion.Questions.Add(new Question { QuestionId = 1, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
         Emotion.Questions.Add(new Question { QuestionId = 2, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
         Emotion.Questions.Add(new Question { QuestionId = 3, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 4, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 5, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 6, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 7, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)1 });
 
-        for (int i = 0; i < Emotion.Questions.Count; i++)
-        {
-            Console.WriteLine(Emotion.Questions[i].QuestionText);
-        }
+        Emotion.Questions.Add(new Question { QuestionId = 4, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
+        Emotion.Questions.Add(new Question { QuestionId = 5, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
+        Emotion.Questions.Add(new Question { QuestionId = 6, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
 
+        Emotion.Questions.Add(new Question { QuestionId = 7, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
+        Emotion.Questions.Add(new Question { QuestionId = 8, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
+        Emotion.Questions.Add(new Question { QuestionId = 9, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
 
-        Console.WriteLine($"Received parameter: {Id}");
+        Emotion.Questions.Add(new Question { QuestionId = 10, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
+        Emotion.Questions.Add(new Question { QuestionId = 11, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
+        Emotion.Questions.Add(new Question { QuestionId = 12, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
+
+        Emotion.Questions.Add(new Question { QuestionId = 13, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
+        Emotion.Questions.Add(new Question { QuestionId = 14, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
+        Emotion.Questions.Add(new Question { QuestionId = 15, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
+
+        SortedQuestions.Add(new List<Question>());
+        SortedQuestions.Add(new List<Question>());
+        SortedQuestions.Add(new List<Question>());
+        SortedQuestions.Add(new List<Question>());
+        SortedQuestions.Add(new List<Question>());
+        SortQuestions(Emotion.Questions);
     }
+
+    private void LoadMoreQuestions(int location)
+    {
+        QuestionAmount[location] += 3;
+        StateHasChanged();
+    }
+
+
+    private void SortQuestions(List<Question> toSort)
+    {
+        foreach (var quesiton in toSort)
+        {
+            switch (quesiton.QuestionType)
+            {
+                case QuestionType.Current:
+                    SortedQuestions[0].Add(quesiton);
+                    break;
+                case QuestionType.Wanted:
+                    SortedQuestions[1].Add(quesiton);
+                    break;
+                case QuestionType.Barrier:
+                    SortedQuestions[2].Add(quesiton);
+                    break;
+                case QuestionType.Solution:
+                    SortedQuestions[3].Add(quesiton);
+                    break;
+                case QuestionType.FutureProof:
+                    SortedQuestions[4].Add(quesiton);
+                    break;
+            }
+        }
+    }
+
     private void Unfold(Question question)
     {
         if (visibilityMap.ContainsKey(question))
