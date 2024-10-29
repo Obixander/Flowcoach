@@ -1,0 +1,44 @@
+﻿@page "/bodyflow"
+@using FlowCoach.Components
+
+<HeaderTitle Title="@title" BackUrl="@backUrl" />
+
+<h4>Articles</h4>
+
+<div id="MainContent">
+    @foreach (var card in BodyFlowCards)
+    {
+        <!--Change path to be a part of a card maybe?-->
+        <CardComponent Title="@card.Title" Id="@card.BodyFlowArticleId" Image="@card.ImageUrl" Path="/bodyflowpage" />
+    }
+</div>
+
+@code {
+
+    private List<BodyFlowCard> BodyFlowCards = new();
+
+    public string title = "Bodyflow Articles"; //used for the header
+    public string backUrl = "/"; //used for the header back-arrow to go back to the previous page
+
+    protected override void OnInitialized()
+    {
+        BodyFlowCards.Add(new BodyFlowCard
+            {
+                CardId = 1,
+                BodyFlowArticleId = 1,
+                Title = "Sanser",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+        
+        BodyFlowCards.Add(new BodyFlowCard
+            {
+                CardId = 2,
+                BodyFlowArticleId = 2,
+                Title = "Repræsentations-system",
+                ImageUrl = @"Images/Stressed.jfif"
+            });
+
+        base.OnInitialized();
+    }
+
+}

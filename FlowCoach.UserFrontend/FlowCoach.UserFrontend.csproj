@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Pages\Bodyflow.razor.css" />
     <None Remove="Pages\EmotionPage.razor.css" />
     <None Remove="Pages\Index.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Pages\Bodyflow.razor.css" />
     <Content Include="Pages\EmotionPage.razor.css" />
     <Content Include="Pages\Index.razor.css" />
   </ItemGroup>
