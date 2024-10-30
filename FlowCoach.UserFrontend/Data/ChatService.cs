@@ -9,7 +9,7 @@ namespace FlowCoach.UserFrontend.Data
         public ChatService()
         {
             _hubConnection = new HubConnectionBuilder()
-                .WithUrl("https://localhost:7003/chathub") // Replace with your API URL
+                .WithUrl("https://localhost:7003/coachinghub") // Replace with your API URL
                 .Build();
         }
 

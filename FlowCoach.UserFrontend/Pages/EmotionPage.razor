@@ -1,53 +1,63 @@
 ﻿@page "/emotionpage/{id:int}"
 @using FlowCoach.UserFrontend.Data
-@inject ChatService ChatService
-<HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
 
-<div id="MainContent">
-    @foreach (var content in Emotion.Content)
-    {
-        <p>@content</p>
-        <hr />
-    }
+@inject NavigationManager Navigation
 
-    @for (int j = 0; j <= 4; j++)
-    {
-
-        <p class="Question-Intro">@Emotion.IntroText[j]</p>
-        @foreach (var question in SortedQuestions[j].Take(QuestionAmount[j]))
+@if (Emotion != null) {
+    <HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
+    <div id="MainContent">
+        @foreach (var content in Emotion.Content)
         {
-
-            <div class="Question-Container">
-                <div class="Question" @onclick="() => Unfold(question)">
-                    <p class="Question-Text">
-                        @question.QuestionText
-                    </p>
-                </div>
-                @if (IsAnswerBoxVisible(question))
-                {
-                    <div class="Question-AnswerBox">
-                        <input class="UserInput" @bind=question.Answer />
-                    </div>
-                }
-            </div>
+            <p>@content</p>
+            <hr />
         }
 
-        @* This somehow works *@
-        <div class="LoadButtonContainer">
-            @{ 
-                var index = j;
+        @for (int j = 0; j <= 4; j++)
+        {
+
+            <p class="Question-Intro">@Emotion.IntroText[j]</p>
+            @foreach (var question in SortedQuestions[j].Take(QuestionAmount[j]))
+            {
+
+                <div class="Question-Container">
+                    <div class="Question" @onclick="() => Unfold(question)">
+                        <p class="Question-Text">
+                            @question.QuestionText
+                        </p>
+                    </div>
+                    @if (IsAnswerBoxVisible(question))
+                    {
+                        <div class="Question-AnswerBox">
+                            <input class="UserInput" @bind=question.Answer />
+                        </div>
+                    }
+                </div>
             }
-            <i class="fa-solid fa-angle-down" style="color: #ffffff;" @onclick="() => LoadMoreQuestions(index)"></i>
-        </div>
 
-        <hr />
-    }
+            @* This somehow works *@
+            <div class="LoadButtonContainer">
+                @{
+                    var index = j;
+                }
+                <i class="fa-solid fa-angle-down" style="color: #ffffff;" @onclick="() => LoadMoreQuestions(index)"></i>
+            </div>
 
-</div>
+            <hr />
+        }
+
+    </div>
+}
+else
+{
+    <strong role="status">Loading...</strong>
+}
 
 
 @code {
     //https://chatgpt.com/c/671f8595-cd48-8011-b263-9910069ee6e4
+    private HubConnection hubConnection;
+
+
     [Parameter]
     public int Id { get; set; } //this is the id that will be used to get the coaching infomation
 
@@ -55,67 +65,19 @@
 
     private Dictionary<Question, bool> visibilityMap = new();
 
-    private List<int> QuestionAmount = new();
+    private List<int> QuestionAmount = new() { 3, 3, 3, 3, 3 };
     private int counter = 0;
 
     private List<List<Question>> SortedQuestions = new();
 
     protected override async void OnInitialized()
     {
-        QuestionAmount.Add(3);
-        QuestionAmount.Add(3);
-        QuestionAmount.Add(3);
-        QuestionAmount.Add(3);
-        QuestionAmount.Add(3);
+        hubConnection = new HubConnectionBuilder()
+           .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/coachinghub"))
+           .Build();
 
-        Emotion = new Coaching
-            {
-                CoachingId = 1,
-                Title = "Stressed",
-                Content = new List<string>
-                {
-                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
-                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
-                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
-                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives.",
-                    "Stress is an unavoidable part of life, and it can be experienced in many different ways. While some individuals may handle stress well, others may find themselves struggling to cope with the pressures they face on a daily basis. Stress can have a negative impact on both physical and mental health, causing symptoms such as fatigue, anxiety, depression, headaches, and even heart disease. In order to manage stress effectively, it is important to understand what causes it in the first place, how it affects our bodies and minds, and what steps we can take to reduce its impact on our lives."
-                },
-                IntroText = new List<string>
-                {
-                    "This is the intro text of the stressed coaching question",
-                    "This is the second intro text of the stressed coaching question",
-                    "This is the third intro text of the stressed coaching question",
-                    "This is the fourth intro text of the stressed coaching question",
-                    "This is the fifth intro text of the stressed coaching question"
-                },
-            };
-        Emotion.Questions = new();
-        Emotion.Questions.Add(new Question { QuestionId = 1, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 2, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 3, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 4, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 5, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-        Emotion.Questions.Add(new Question { QuestionId = 6, QuestionText = "How are you feeling?", QuestionType = (QuestionType)0 });
-
-        Emotion.Questions.Add(new Question { QuestionId = 7, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 8, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 9, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 10, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 11, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 12, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-        Emotion.Questions.Add(new Question { QuestionId = 13, QuestionText = "How are you feeling?", QuestionType = (QuestionType)1 });
-
-        Emotion.Questions.Add(new Question { QuestionId = 14, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
-        Emotion.Questions.Add(new Question { QuestionId = 15, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
-        Emotion.Questions.Add(new Question { QuestionId = 16, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)2 });
-
-        Emotion.Questions.Add(new Question { QuestionId = 17, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
-        Emotion.Questions.Add(new Question { QuestionId = 18, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
-        Emotion.Questions.Add(new Question { QuestionId = 19, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)3 });
-
-        Emotion.Questions.Add(new Question { QuestionId = 20, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
-        Emotion.Questions.Add(new Question { QuestionId = 21, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
-        Emotion.Questions.Add(new Question { QuestionId = 22, QuestionText = "How is fixing this not worky?", QuestionType = (QuestionType)4 });
+        await hubConnection.StartAsync();
+        Emotion = await hubConnection.InvokeAsync<Coaching>("GetCoachingAsyncBy", Id);
 
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());
@@ -123,13 +85,7 @@
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());
         SortQuestions(Emotion.Questions);
-
-        await ChatService.StartConnectionAsync();
-        await ChatService.SubscribeToMessages((user, message) =>
-        {
-            // Handle incoming messages
-        });
-
+        StateHasChanged();
     }
 
     private void LoadMoreQuestions(int location)

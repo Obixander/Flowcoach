@@ -43,7 +43,8 @@ namespace FlowCoach.Hubs
 
             app.UseCors("AllowBlazorClient");
             app.MapControllers();
-            app.MapHub<Chathub>("/chathub"); // Set up the SignalR Hub endpoint
+            app.MapHub<CoachingHub>("/coachinghub");
+            app.MapHub<EmotionHub>("/emotionhub");
 
             app.Run();
         }

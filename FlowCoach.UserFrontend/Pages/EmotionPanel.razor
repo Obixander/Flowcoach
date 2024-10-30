@@ -1,113 +1,46 @@
 ﻿@page "/emotionPanel"
 @using FlowCoach.Components
+@inject NavigationManager Navigation
 
-<HeaderTitle Title="@title" BackUrl="@backUrl" />
+@if (emotionCards != null)
+{
 
-<h4>Lige nu føler jeg mig</h4>
 
-<div id="MainContent">
-    @foreach (var card in emotionCards)
-    {
-        <!--Change path to be a part of a card maybe?-->
-        <CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
-    }
-</div>
+    <HeaderTitle Title="@title" BackUrl="@backUrl" />
 
+    <h4>Lige nu føler jeg mig</h4>
+
+    <div id="MainContent">
+        @foreach (var card in emotionCards)
+        {
+            <!--Change path to be a part of a card maybe?-->
+            <CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
+        }
+    </div>
+}
+else
+{
+    <strong style="color="#ffffff"">Loading...</strong>
+}
 @code {
+    private HubConnection hubConnection;
 
-    private List<EmotionCard> emotionCards = new();
 
-    public string title = "Emotion Panel"; //used for the header 
+    private List<EmotionCard> emotionCards;
+
+    public string title = "Emotion Panel"; //used for the header
     public string backUrl = "/"; //used for the header back-arrow to go back to the previous page
 
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 1,
-                CoachingId = 1,
-                Title = "Stressed",
-                ImageUrl = @"Images/Stressed.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 2,
-                CoachingId = 2,
-                Title = "Angst",
-                ImageUrl = @"Images/Angst.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 3,
-                CoachingId = 3,
-                Title = "Deprimeret",
-                ImageUrl = @"Images/Deprimeret.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 4,
-                CoachingId = 4,
-                Title = "Ikke god nok",
-                ImageUrl = @"Images/IkkeGodNok.jpeg"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 5,
-                CoachingId = 5,
-                Title = "Vred",
-                ImageUrl = @"Images/Vred.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 6,
-                CoachingId = 6,
-                Title = "Afhængig af SoMe",
-                ImageUrl = @"Images/SoMe.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 7,
-                CoachingId = 7,
-                Title = "Stressed",
-                ImageUrl = @"Images/Stressed.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 8,
-                CoachingId = 8,
-                Title = "Angst",
-                ImageUrl = @"Images/Angst.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 9,
-                CoachingId = 9,
-                Title = "Deprimeret",
-                ImageUrl = @"Images/Deprimeret.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 10,
-                CoachingId = 10,
-                Title = "Ikke god nok",
-                ImageUrl = @"Images/IkkeGodNok.jpeg"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 11,
-                CoachingId = 11,
-                Title = "Vred",
-                ImageUrl = @"Images/Vred.jfif"
-            });
-        emotionCards.Add(new EmotionCard
-            {
-                CardId = 12,
-                CoachingId = 12,
-                Title = "Afhængig af SoMe",
-                ImageUrl = @"Images/SoMe.jfif"
-            });
+        hubConnection = new HubConnectionBuilder()
+            .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/emotionhub"))
+            .Build();
 
+        await hubConnection.StartAsync();
+        emotionCards = await hubConnection.InvokeAsync<List<EmotionCard>>("GetEmotionCardsAsync");
 
+        StateHasChanged();
         base.OnInitialized();
     }
 
