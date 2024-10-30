@@ -1,9 +1,11 @@
 ﻿@page "/"
-@inject NavigationManager navManager
+@inject NavigationManager Navigation
 @using FlowCoach.Components
 <!--Change this later to the correct path and title-->
-<HeaderTitle Title="Flowcoach" BackUrl="/" />
 
+@if (flowCoachCards != null){
+    
+<HeaderTitle Title="Flowcoach" BackUrl="" />
 <div id="BodyContainer">
     @foreach (var card in flowCoachCards)
     {
@@ -12,38 +14,29 @@
                                 Image="@card.ImageUrl"
                                 Description="@card.Description" />
     }
-</div>
+    </div>
+}
+else
+{
+    <strong role="status" style="color: #ffffff">Loading...</strong>
+}
 
 
 @code {
-    public List<FlowCoachCard> flowCoachCards = new List<FlowCoachCard>(); //this list will be used to contain the infomation from the db later
+    private HubConnection hubConnection;
 
-    protected override void OnInitialized()
+    public List<FlowCoachCard> flowCoachCards; //this list will be used to contain the infomation from the db later
+
+    protected async override void OnInitialized()
     {
-        flowCoachCards.Add(new FlowCoachCard
-            {
-                CardId = 1,
-                Title = "Emotion Panel",
-                Path = "/emotionPanel",
-                Description = "This is the description of the Emotion Panel",
-                ImageUrl = @"Images/Stressed.jfif"
-            });
-        flowCoachCards.Add(new FlowCoachCard
-            {
-                CardId = 2,
-                Title = "Selfcare Panel",
-                Path = "/selfcare",
-                Description = "This is the description of the selfcare Panel",
-                ImageUrl = @"Images/Angst.jfif"
-            });
-        flowCoachCards.Add(new FlowCoachCard
-            {
-                CardId = 3,
-                Title = "Selfcare Panel",
-                Path = "/selfcare",
-                Description = "This is the description of the selfcare Panel",
-                ImageUrl = @"Images/Angst.jfif"
-            });
+        hubConnection = new HubConnectionBuilder()
+           .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/flowcoachhub"))
+           .Build();
+
+        await hubConnection.StartAsync();
+        flowCoachCards = await hubConnection.InvokeAsync<List<FlowCoachCard>>("GetFlowCoachCards");
+
+        StateHasChanged();
     }
 
 

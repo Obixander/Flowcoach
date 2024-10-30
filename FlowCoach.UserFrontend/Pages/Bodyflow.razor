@@ -1,71 +1,43 @@
 ﻿@page "/bodyflow"
 @using FlowCoach.Components
+@inject NavigationManager Navigation
 
-<HeaderTitle Title="@title" BackUrl="@backUrl" />
+@if (BodyFlowCards != null)
+{
+    <HeaderTitle Title="@title" BackUrl="@backUrl" />
+    <h4>Articles</h4>
+    <div id="MainContent">
+        @foreach (var card in BodyFlowCards)
+        {
+            <!--Change path to be a part of a card maybe?-->
+            <CardComponent Title="@card.Title" Id="@card.BodyFlowArticleId" Image="@card.ImageUrl" Path="/bodyflowpage" />
+        }
+    </div>
+}
+else
+{
+    <strong role="status" style="color: #ffffff">Loading...</strong>
 
-<h4>Articles</h4>
-
-<div id="MainContent">
-    @foreach (var card in BodyFlowCards)
-    {
-        <!--Change path to be a part of a card maybe?-->
-        <CardComponent Title="@card.Title" Id="@card.BodyFlowArticleId" Image="@card.ImageUrl" Path="/bodyflowpage" />
-    }
-</div>
-
+}
 @code {
+    private HubConnection hubConnection;
 
-    private List<BodyFlowCard> BodyFlowCards = new();
+    private List<BodyFlowCard> BodyFlowCards;
 
     public string title = "Bodyflow Articles"; //used for the header
     public string backUrl = "/"; //used for the header back-arrow to go back to the previous page
 
-    protected override void OnInitialized()
+    protected async override void OnInitialized()
     {
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 1,
-                BodyFlowArticleId = 1,
-                Title = "Sanser",
-                ImageUrl = @"Images/Sanser.jfif"
-            });
-        
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 2,
-                BodyFlowArticleId = 2,
-                Title = "Repræsentations-system",
-                ImageUrl = @"Images/Repræsentations-system.png"
-            });
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 3,
-                BodyFlowArticleId = 3,
-                Title = "Tænker",
-                ImageUrl = @"Images/Tænker.jfif"
-            });
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 4,
-                BodyFlowArticleId = 4,
-                Title = "Følelser",
-                ImageUrl = @"Images/Følelser.jfif"
-            });
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 5,
-                BodyFlowArticleId = 5,
-                Title = "Adfærd",
-                ImageUrl = @"Images/Adfærd.jfif"
-            });
-        BodyFlowCards.Add(new BodyFlowCard
-            {
-                CardId = 6,
-                BodyFlowArticleId = 6,
-                Title = "Nervesystemet",
-                ImageUrl = @"Images/Nervesystemet.jfif"
-            });
+        hubConnection = new HubConnectionBuilder()
+          .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowhub"))
+          .Build();
 
+        await hubConnection.StartAsync();
+        BodyFlowCards = await hubConnection.InvokeAsync<List<BodyFlowCard>>("GetBodyflowCards");
+
+
+        StateHasChanged();
         base.OnInitialized();
     }
 

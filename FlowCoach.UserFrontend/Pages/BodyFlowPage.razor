@@ -1,7 +1,47 @@
 ﻿@page "/bodyflowpage/{id:int}"
-<h3>BodyFlowPage</h3>
+@inject NavigationManager Navigation
+
+@if (bodyFlowArticle != null)
+{
+    <HeaderTitle Title="@bodyFlowArticle.Title" BackUrl="/bodyflow"/>
+    <div class="Article-Container">
+    @for (int i = 0; i < bodyFlowArticle.Content.Count; i++)
+    {
+        <p>@bodyFlowArticle.Content[i]</p>
+        
+        if (i < bodyFlowArticle.Images.Count)
+        {
+            <img src="@bodyFlowArticle.Images[i]" alt="Image" />
+        }
+        else
+        {
+            <hr />
+        }
+    }
+    </div>
+}
+else
+{
+    <strong role="status" style="color: #ffffff">Loading...</strong>
+}
 
 @code {
+    private HubConnection hubConnection;
+
     [Parameter]
-    public int Id { get; set; }
+    public int Id { get; set; } //id used to get bodyflowarticle
+
+    private BodyFlowArticle bodyFlowArticle;
+
+    protected async override void OnInitialized()
+    {
+        hubConnection = new HubConnectionBuilder()
+          .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowarticlehub"))
+          .Build();
+
+        await hubConnection.StartAsync();
+        bodyFlowArticle = await hubConnection.InvokeAsync<BodyFlowArticle>("GetArticleBy", Id);
+        StateHasChanged();
+    }
+
 }

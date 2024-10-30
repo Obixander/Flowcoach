@@ -45,7 +45,9 @@ namespace FlowCoach.Hubs
             app.MapControllers();
             app.MapHub<CoachingHub>("/coachinghub");
             app.MapHub<EmotionHub>("/emotionhub");
-
+            app.MapHub<FlowcoachHub>("/flowcoachhub");
+            app.MapHub<BodyflowHub>("/bodyflowhub");
+            app.MapHub<BodyflowArticleHub>("/bodyflowarticlehub");
             app.Run();
         }
     }
