@@ -48,6 +48,7 @@ namespace FlowCoach.Hubs
             app.MapHub<FlowcoachHub>("/flowcoachhub");
             app.MapHub<BodyflowHub>("/bodyflowhub");
             app.MapHub<BodyflowArticleHub>("/bodyflowarticlehub");
+            app.MapHub<SelfCareHub>("/selfcarehub");
             app.Run();
         }
     }

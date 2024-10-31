@@ -1,18 +1,18 @@
-﻿@page "/emotionPanel"
+﻿@page "/selfcarePanel"
 @using FlowCoach.Components
 @inject NavigationManager Navigation
 
-@if (emotionCards != null)
-{
-    <HeaderTitle Title="@title" BackUrl="@backUrl" />
+@if (selfCareCards != null)
+{ 
+    <@HeaderTitle Title="@title" BackUrl="@backUrl" />
 
     <h4>Lige nu føler jeg mig</h4>
 
     <div id="MainContent">
-        @foreach (var card in emotionCards)
+        @foreach (var card in selfCareCards)
         {
             <!--Change path to be a part of a card maybe?-->
-            <CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
+            <@CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
         }
     </div>
 }
@@ -24,19 +24,19 @@ else
     private HubConnection hubConnection;
 
 
-    private List<EmotionCard> emotionCards;
+    private List<SelfCareCard> selfCareCards;
 
-    public string title = "Emotion Panel"; //used for the header
+    public string title = "Selfcare Panel"; //used for the header
     public string backUrl = "/"; //used for the header back-arrow to go back to the previous page
 
     protected async override void OnInitialized()
     {
         hubConnection = new HubConnectionBuilder()
-            .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/emotionhub"))
+            .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/selfcarehub"))
             .Build();
 
         await hubConnection.StartAsync();
-        emotionCards = await hubConnection.InvokeAsync<List<EmotionCard>>("GetEmotionCardsAsync");
+        selfCareCards = await hubConnection.InvokeAsync<List<SelfCareCard>>("GetSelfCareCardsAsync");
 
         StateHasChanged();
         base.OnInitialized();

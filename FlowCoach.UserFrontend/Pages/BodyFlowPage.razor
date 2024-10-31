@@ -3,21 +3,21 @@
 
 @if (bodyFlowArticle != null)
 {
-    <HeaderTitle Title="@bodyFlowArticle.Title" BackUrl="/bodyflow"/>
+    <HeaderTitle Title="@bodyFlowArticle.Title" BackUrl="/bodyflow" />
     <div class="Article-Container">
-    @for (int i = 0; i < bodyFlowArticle.Content.Count; i++)
-    {
-        <p>@bodyFlowArticle.Content[i]</p>
-        
-        if (i < bodyFlowArticle.Images.Count)
+        @for (int i = 0; i < bodyFlowArticle.Content.Count; i++)
         {
-            <img src="@bodyFlowArticle.Images[i]" alt="Image" />
+            <p>@bodyFlowArticle.Content[i]</p>
+
+            if (i < bodyFlowArticle.Images.Count)
+            {
+                <img src="@bodyFlowArticle.Images[i]" alt="Image" />
+            }
+            else
+            {
+                <hr />
+            }
         }
-        else
-        {
-            <hr />
-        }
-    }
     </div>
 }
 else
@@ -31,13 +31,13 @@ else
     [Parameter]
     public int Id { get; set; } //id used to get bodyflowarticle
 
-    private BodyFlowArticle bodyFlowArticle;
+    private BodyFlowArticle bodyFlowArticle = null;
 
     protected async override void OnInitialized()
     {
         hubConnection = new HubConnectionBuilder()
-          .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowarticlehub"))
-          .Build();
+        .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowarticlehub"))
+        .Build();
 
         await hubConnection.StartAsync();
         bodyFlowArticle = await hubConnection.InvokeAsync<BodyFlowArticle>("GetArticleBy", Id);

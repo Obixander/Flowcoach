@@ -20,17 +20,9 @@ namespace FlowCoach.Hubs.Hubs
             {
                 CardId = 2,
                 Title = "Selvomsår",
-                Path = "/selfcare",
+                Path = "/selfcarePanel",
                 Description = "Lær om hvordan du kan hjælpe dig selv",
                 ImageUrl = @"Images/Selfcare.jfif"
-            });
-            flowCoachCards.Add(new FlowCoachCard
-            {
-                CardId = 3,
-                Title = "Showcase",
-                Path = "/Showcase",
-                Description = "This is the description of the showcase Panel",
-                ImageUrl = @"Images/Angst.jfif"
             });
             return flowCoachCards;
         }

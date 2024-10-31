@@ -7,10 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\SelfcarePanel.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Pages\Bodyflow.razor.css" />
     <None Remove="Pages\BodyFlowPage.razor.css" />
     <None Remove="Pages\EmotionPage.razor.css" />
     <None Remove="Pages\Index.razor.css" />
+    <None Remove="Pages\SelfcarePanel.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +23,7 @@
     <Content Include="Pages\BodyFlowPage.razor.css" />
     <Content Include="Pages\EmotionPage.razor.css" />
     <Content Include="Pages\Index.razor.css" />
+    <Content Include="Pages\SelfcarePanel.razor.css" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,6 +38,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\SelfcarePanel.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\SelfcarePanel.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\SelfcarePanel.razor" />
   </ItemGroup>
 
 </Project>
