@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,12 +15,79 @@ namespace FlowCoach.Entities
         private bool isSaveAble;
         private string? answer;
 
-        public int QuestionId { get => questionId; set => questionId = value; }
-        public string QuestionText { get => questionText; set => questionText = value; }
-        public bool IsSaveAble { get => isSaveAble; set => isSaveAble = value; }
-        public string Answer { get => answer; set => answer = value; }
+        public int QuestionId
+        {
+            get => questionId;
+            set
+            {
+                if (value >= 0)
+                {
+                    if (value != questionId)
+                        questionId = value;
+                }
+                else
+                {
+                    throw new Exception("Id must be a positive number");
+                }
+            }
+        }
+        public string QuestionText
+        {
+            get => questionText;
+            set
+            {
+                if (!string.IsNullOrWhiteSpace(value))
+                {
+                    if (value != questionText)
+                        questionText = value;
+                }
+                else
+                {
+                    throw new Exception("Question text must not be empty");
+                }
 
-        public QuestionType QuestionType { get => questionType; set => questionType = value; }
+            }
+        }
+        public bool IsSaveAble
+        {
+            get => isSaveAble;
+            set
+            {
+                if (value != isSaveAble)
+                    isSaveAble = value;
+            }
+        }
+        public string Answer
+        {
+            get => answer;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value)) //if the user didnt answer the question sets it to be "" to avoid null reference exceptions
+                    answer = "";
+                else
+                {
+                    if (value != answer)
+                        answer = value;
+                }
+            }
+        }
+
+        public QuestionType QuestionType 
+        {
+            get => questionType; 
+            set 
+            {
+                if ((int)value <= 5)
+                {
+                    if (value != questionType)
+                        questionType = value;
+                }
+                else
+                {
+                    throw new Exception("The value was greater the max allowed");
+                }
+            }
+        }
     }
 
     public enum QuestionType
