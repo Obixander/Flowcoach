@@ -1,5 +1,8 @@
 ﻿@page "/bodyflowpage/{id:int}"
 @inject NavigationManager Navigation
+@inject SignalRService Hub
+@using FlowCoach.Common
+@using FlowCoach.UserFrontend.Data
 
 @if (bodyFlowArticle != null)
 {
@@ -26,7 +29,6 @@ else
 }
 
 @code {
-    private HubConnection hubConnection;
 
     [Parameter]
     public int Id { get; set; } //id used to get bodyflowarticle
@@ -35,12 +37,9 @@ else
 
     protected async override void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-        .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowarticlehub"))
-        .Build();
+        await Hub.StartConnectionAsync();
+        bodyFlowArticle = await Hub.HubConnection.InvokeAsync<BodyFlowArticle>(nameof(IFlowCoachHub.GetArticleBy), Id);
 
-        await hubConnection.StartAsync();
-        bodyFlowArticle = await hubConnection.InvokeAsync<BodyFlowArticle>("GetArticleBy", Id);
         StateHasChanged();
     }
 

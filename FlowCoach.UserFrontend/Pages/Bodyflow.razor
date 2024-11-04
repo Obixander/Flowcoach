@@ -1,6 +1,9 @@
 ﻿@page "/bodyflow"
 @using FlowCoach.Components
 @inject NavigationManager Navigation
+@inject SignalRService Hub
+@using FlowCoach.Common
+@using FlowCoach.UserFrontend.Data 
 
 @if (BodyFlowCards != null)
 {
@@ -20,8 +23,6 @@ else
 
 }
 @code {
-    private HubConnection hubConnection;
-
     private List<BodyFlowCard> BodyFlowCards;
 
     public string title = "Bodyflow Articles"; //used for the header
@@ -29,16 +30,10 @@ else
 
     protected async override void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-          .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/bodyflowhub"))
-          .Build();
-
-        await hubConnection.StartAsync();
-        BodyFlowCards = await hubConnection.InvokeAsync<List<BodyFlowCard>>("GetBodyflowCards");
-
+        await Hub.StartConnectionAsync();
+        BodyFlowCards = await Hub.HubConnection.InvokeAsync<List<BodyFlowCard>>(nameof(IFlowCoachHub.GetBodyflowCards));
 
         StateHasChanged();
-        base.OnInitialized();
     }
 
 }

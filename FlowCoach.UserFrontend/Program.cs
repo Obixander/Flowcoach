@@ -2,6 +2,7 @@ using ComponentLibrary;
 using FlowCoach.UserFrontend.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace FlowCoach.UserFrontend
 {
@@ -14,9 +15,8 @@ namespace FlowCoach.UserFrontend
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<HeaderTitle>(); //remove later
-            //depency injection of hub
-
+            builder.Services.AddSingleton(new SignalRService("https://localhost:7003/flowcoachhub"));
+            
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

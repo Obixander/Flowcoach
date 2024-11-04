@@ -1,7 +1,9 @@
 ﻿@page "/emotionpage/{id:int}"
+@inject NavigationManager Navigation
+@inject SignalRService Hub
+@using FlowCoach.Common
 @using FlowCoach.UserFrontend.Data
 
-@inject NavigationManager Navigation
 
 @if (Emotion != null) {
     <HeaderTitle Title="@Emotion.Title" BackUrl="/EmotionPanel" />
@@ -54,9 +56,6 @@ else
 
 
 @code {
-    //https://chatgpt.com/c/671f8595-cd48-8011-b263-9910069ee6e4
-    private HubConnection hubConnection;
-
 
     [Parameter]
     public int Id { get; set; } //this is the id that will be used to get the coaching infomation
@@ -72,12 +71,8 @@ else
 
     protected override async void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-           .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/coachinghub"))
-           .Build();
-
-        await hubConnection.StartAsync();
-        Emotion = await hubConnection.InvokeAsync<Coaching>("GetCoachingAsyncBy", Id);
+        await Hub.StartConnectionAsync();
+        Emotion = await Hub.HubConnection.InvokeAsync<Coaching>(nameof(IFlowCoachHub.GetCoachingAsyncBy), Id);
 
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());

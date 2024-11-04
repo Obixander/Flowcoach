@@ -1,5 +1,8 @@
 ﻿@page "/selfcarePanel"
 @using FlowCoach.Components
+@inject SignalRService Hub
+@using FlowCoach.Common
+@using FlowCoach.UserFrontend.Data
 @inject NavigationManager Navigation
 
 @if (selfCareCards != null)
@@ -21,8 +24,6 @@ else
     <strong role="status" style="color: #ffffff">Loading...</strong>
 }
 @code {
-    private HubConnection hubConnection;
-
 
     private List<SelfCareCard> selfCareCards;
 
@@ -31,12 +32,8 @@ else
 
     protected async override void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-            .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/selfcarehub"))
-            .Build();
-
-        await hubConnection.StartAsync();
-        selfCareCards = await hubConnection.InvokeAsync<List<SelfCareCard>>("GetSelfCareCardsAsync");
+        await Hub.StartConnectionAsync();
+        selfCareCards = await Hub.HubConnection.InvokeAsync<List<SelfCareCard>>(nameof(IFlowCoachHub.GetSelfCareCardsAsync));
 
         StateHasChanged();
     }

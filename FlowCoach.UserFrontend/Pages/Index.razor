@@ -1,5 +1,8 @@
 ﻿@page "/"
 @inject NavigationManager Navigation
+@inject SignalRService Hub
+@using FlowCoach.Common
+@using FlowCoach.UserFrontend.Data
 @using FlowCoach.Components
 <!--Change this later to the correct path and title-->
 
@@ -23,18 +26,12 @@ else
 
 
 @code {
-    private HubConnection hubConnection;
-
     public List<FlowCoachCard> flowCoachCards; //this list will be used to contain the infomation from the db later
 
     protected async override void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-           .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/flowcoachhub"))
-           .Build();
-
-        await hubConnection.StartAsync();
-        flowCoachCards = await hubConnection.InvokeAsync<List<FlowCoachCard>>("GetFlowCoachCards");
+        await Hub.StartConnectionAsync();
+        flowCoachCards = await Hub.HubConnection.InvokeAsync<List<FlowCoachCard>>(nameof(IFlowCoachHub.GetFlowCoachCards));
 
         StateHasChanged();
     }

@@ -43,13 +43,7 @@ namespace FlowCoach.Hubs
 
             app.UseCors("AllowBlazorClient");
             app.MapControllers();
-            app.MapHub<CoachingHub>("/coachinghub");
-            app.MapHub<EmotionHub>("/emotionhub");
             app.MapHub<FlowcoachHub>("/flowcoachhub");
-            app.MapHub<BodyflowHub>("/bodyflowhub");
-            app.MapHub<BodyflowArticleHub>("/bodyflowarticlehub");
-            app.MapHub<SelfCareHub>("/selfcarehub");
-            app.MapHub<SelfCarePageHub>("/selfcarepagehub");
             app.Run();
         }
     }

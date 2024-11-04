@@ -1,6 +1,9 @@
 ﻿@page "/emotionPanel"
-@using FlowCoach.Components
 @inject NavigationManager Navigation
+@inject SignalRService Hub
+@using FlowCoach.Common
+@using FlowCoach.UserFrontend.Data
+@using FlowCoach.Components
 
 @if (emotionCards != null)
 {
@@ -21,8 +24,6 @@ else
     <strong role="status" style="color: #ffffff">Loading...</strong>
 }
 @code {
-    private HubConnection hubConnection;
-
 
     private List<EmotionCard> emotionCards;
 
@@ -31,15 +32,10 @@ else
 
     protected async override void OnInitialized()
     {
-        hubConnection = new HubConnectionBuilder()
-            .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/emotionhub"))
-            .Build();
-
-        await hubConnection.StartAsync();
-        emotionCards = await hubConnection.InvokeAsync<List<EmotionCard>>("GetEmotionCardsAsync");
+        await Hub.StartConnectionAsync();
+        emotionCards = await Hub.HubConnection.InvokeAsync<List<EmotionCard>>(nameof(IFlowCoachHub.GetEmotionCardsAsync));
 
         StateHasChanged();
-        base.OnInitialized();
     }
 
 }
