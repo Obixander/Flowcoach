@@ -4,7 +4,7 @@
 
 @if (selfCareCards != null)
 {
-    <@HeaderTitle Title="@title" BackUrl="@backUrl" />
+    <HeaderTitle Title="@title" BackUrl="@backUrl" />
 
     <h4>Lige nu føler jeg mig</h4>
 
@@ -12,7 +12,7 @@
         @foreach (var card in selfCareCards)
         {
             <!--Change path to be a part of a card maybe?-->
-            <@CardComponent Title="@card.Title" Id="@card.CoachingId" Image="@card.ImageUrl" Path="/EmotionPage" />
+            <CardComponent Title="@card.Title" Id="@card.SelfCareArticleId" Image="@card.ImageUrl" Path="/selfcarepage" />
         }
     </div>
 }
@@ -39,7 +39,6 @@ else
         selfCareCards = await hubConnection.InvokeAsync<List<SelfCareCard>>("GetSelfCareCardsAsync");
 
         StateHasChanged();
-        base.OnInitialized();
     }
 
 }

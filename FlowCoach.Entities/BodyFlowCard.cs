@@ -9,9 +9,8 @@ namespace FlowCoach.Entities
     public class BodyFlowCard : Card
     {
         private int bodyFlowArticleId; //this is the id used to find where to send the user after selecting a body flow
-        private BodyFlowArticle bodyFlowArticle;
-        public int BodyFlowArticleId 
-        { 
+        public int BodyFlowArticleId
+        {
             get => bodyFlowArticleId;
             set
             {
@@ -26,22 +25,6 @@ namespace FlowCoach.Entities
                 }
             }
         }
-        public BodyFlowArticle BodyFlowArticle 
-        { 
-            get => bodyFlowArticle;
-            set
-            {
-                if (value != null)
-                {
-                    if (value != bodyFlowArticle)
-                        bodyFlowArticle = value;
-                }
-                else
-                {
-                    throw new Exception("The value must not be null");
-                }
-                     
-            }
-        }
+       
     }
 }

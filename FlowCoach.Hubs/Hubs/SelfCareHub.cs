@@ -8,6 +8,8 @@ namespace FlowCoach.Hubs.Hubs
         public async Task<List<SelfCareCard>> GetSelfCareCardsAsync()
         {
             List<SelfCareCard> result = new List<SelfCareCard>();
+
+
             result.Add(new SelfCareCard
             {
                 CardId = 1,
@@ -35,7 +37,7 @@ namespace FlowCoach.Hubs.Hubs
                 Title = "Kost",
                 SelfCareArticleId = 4,
                 ImageUrl = @"Images/Kost.jfif"
-                
+
             });
             return result;
         }

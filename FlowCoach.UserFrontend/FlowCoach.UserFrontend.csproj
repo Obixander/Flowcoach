@@ -11,6 +11,7 @@
     <None Remove="Pages\BodyFlowPage.razor.css" />
     <None Remove="Pages\EmotionPage.razor.css" />
     <None Remove="Pages\Index.razor.css" />
+    <None Remove="Pages\SelfCareArticlePage.razor.css" />
     <None Remove="Pages\SelfCarePanel.razor.css" />
   </ItemGroup>
 
@@ -19,6 +20,7 @@
     <Content Include="Pages\BodyFlowPage.razor.css" />
     <Content Include="Pages\EmotionPage.razor.css" />
     <Content Include="Pages\Index.razor.css" />
+    <Content Include="Pages\SelfCareArticlePage.razor.css" />
     <Content Include="Pages\SelfCarePanel.razor.css" />
   </ItemGroup>
 

@@ -14,8 +14,8 @@ namespace FlowCoach.UserFrontend
             // Add services to the container.
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
-            builder.Services.AddSingleton<HeaderTitle>();
-
+            builder.Services.AddSingleton<HeaderTitle>(); //remove later
+            //depency injection of hub
 
             var app = builder.Build();
 

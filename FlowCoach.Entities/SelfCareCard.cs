@@ -9,7 +9,6 @@ namespace FlowCoach.Entities
     public class SelfCareCard : Card
     {
         private int selfCareArticleId; //this is the id used to find where to send the user after selecting a self care card
-        private SelfCareArticle selfcareArticle;
         public int SelfCareArticleId 
         {
             get => selfCareArticleId;
@@ -26,21 +25,6 @@ namespace FlowCoach.Entities
                 }
             }
         }
-        public SelfCareArticle SelfcareArticle 
-        {
-            get => selfcareArticle;
-            set 
-            {
-                if (value != null)
-                {
-                    if (value != selfcareArticle)
-                        selfcareArticle = value;
-                }
-                else
-                {
-                    throw new Exception("Self care article must not be null");
-                }
-            }
-        }
+       
     }
 }

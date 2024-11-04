@@ -1,0 +1,21 @@
+﻿<h3>SelfCarePage</h3>
+
+@code {
+    private HubConnection hubConnection;
+
+    [Parameter]
+    public int Id { get; set; } //id used to get bodyflowarticle
+
+    private SelfCareArticle selfCareArticle = null;
+
+    protected async override void OnInitialized()
+    {
+        hubConnection = new HubConnectionBuilder()
+        .WithUrl(Navigation.ToAbsoluteUri("https://localhost:7003/selfcarepagehub"))
+        .Build();
+
+        await hubConnection.StartAsync();
+        selfCareArticle = await hubConnection.InvokeAsync<SelfCareArticle>("GetArticleAsync", Id);
+        StateHasChanged();
+    }
+}
