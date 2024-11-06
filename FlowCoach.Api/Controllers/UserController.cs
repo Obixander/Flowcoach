@@ -77,7 +77,7 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpGet]
         [Route(nameof(GetBy))]
-        public async Task<ActionResult<List<User>>> GetBy(int id)
+        public async Task<ActionResult<List<User>>> GetBy(int id) //might have to change this to from query later
         {
             try
             {

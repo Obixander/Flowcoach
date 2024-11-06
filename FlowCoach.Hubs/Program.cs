@@ -1,4 +1,3 @@
-
 using FlowCoach.Hubs.Hubs;
 
 namespace FlowCoach.Hubs

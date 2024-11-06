@@ -1,5 +1,6 @@
 ﻿using FlowCoach.Common;
 using FlowCoach.Entities;
+using FlowCoach.Services;
 using Microsoft.AspNetCore.SignalR;
 
 namespace FlowCoach.Hubs.Hubs
@@ -77,6 +78,8 @@ namespace FlowCoach.Hubs.Hubs
 
         public async Task<List<EmotionCard>> GetEmotionCardsAsync()
         {
+            Testing test = new();
+            await test.GetAll();
             List<EmotionCard> emotionCards = new();
             emotionCards.Add(new EmotionCard
             {
@@ -329,6 +332,7 @@ namespace FlowCoach.Hubs.Hubs
 
         public async Task<BodyFlowArticle> GetArticleBy(int id)
         {
+
             BodyFlowArticle testing = new BodyFlowArticle();
             testing.BodyFlowArticleId = 1;
             testing.Title = "Sanser";
