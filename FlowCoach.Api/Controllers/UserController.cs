@@ -7,14 +7,14 @@ namespace FlowCoach.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController(IUserRepository userRepository) : ControllerBase
+    public class UserController(IUserRepository Context) : ControllerBase
     {
         [HttpPost]
         public async Task<ActionResult> AddBy(User entity)
         {
             try
             {
-               await userRepository.Add(entity);
+               await Context.Add(entity);
                return Ok();
             }
             catch (Exception ex)
@@ -27,7 +27,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                await userRepository.Update(entity);
+                await Context.Update(entity);
                 return Ok();
             }
             catch(Exception ex)
@@ -40,7 +40,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                await userRepository.Delete(entity);
+                await Context.Delete(entity);
                 return Ok();
             }
             catch (Exception ex)
@@ -54,7 +54,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                await userRepository.DeleteAt(id);
+                await Context.DeleteAt(id);
                 return Ok();
             }
             catch(Exception ex)
@@ -68,7 +68,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-                return Ok(await userRepository.GetAll());
+                return Ok(await Context.GetAll());
             }
             catch (Exception ex)
             {
@@ -81,7 +81,7 @@ namespace FlowCoach.Api.Controllers
         {
             try
             {
-               return Ok(await userRepository.GetBy(id));
+               return Ok(await Context.GetBy(id));
             }
             catch (Exception ex)
             {
@@ -94,7 +94,7 @@ namespace FlowCoach.Api.Controllers
         {
             try 
             {
-                return Ok(await userRepository.Login(user));
+                return Ok(await Context.Login(user));
             }
             catch (Exception ex)
             {

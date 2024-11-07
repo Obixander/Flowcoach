@@ -8,7 +8,7 @@ namespace FlowCoach.DataAccess
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-            
+
         }
 
         public DbSet<User> Users { get; set; } = null;
@@ -43,6 +43,7 @@ namespace FlowCoach.DataAccess
                 .Property(c => c.CardId)
                 .HasColumnName("FlowCoachCardId");
             modelBuilder.Entity<FlowCoachCard>().HasKey(c => c.CardId);
+
         }
 
 

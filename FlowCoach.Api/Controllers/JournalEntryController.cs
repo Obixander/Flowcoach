@@ -10,11 +10,25 @@ namespace FlowCoach.Api.Controllers
     public class JournalEntryController(IGenericRepository<JournalEntry> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(JournalEntry journalEntry)
+        public async Task<ActionResult> AddBy(JournalEntry journalEntry)
         {
             try
             {
                 await Context.Add(journalEntry);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(JournalEntry entity)
+        {
+            try
+            {
+                await Context.Update(entity);
                 return Ok();
             }
             catch (Exception ex)

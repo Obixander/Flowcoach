@@ -53,6 +53,10 @@ namespace FlowCoach.Entities
             get => isSaveAble;
             set
             {
+                if (questionType == QuestionType.Current || questionType == QuestionType.Barrier)
+                {
+                    return;
+                }
                 if (value != isSaveAble)
                     isSaveAble = value;
             }

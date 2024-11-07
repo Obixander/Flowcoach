@@ -10,11 +10,25 @@ namespace FlowCoach.Api.Controllers
     public class BodyFlowCardController(IGenericRepository<BodyFlowCard> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(BodyFlowCard coaching)
+        public async Task<ActionResult> AddBy(BodyFlowCard coaching)
         {
             try
             {
                 await Context.Add(coaching);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(BodyFlowCard entity)
+        {
+            try
+            {
+                await Context.Update(entity);
                 return Ok();
             }
             catch (Exception ex)

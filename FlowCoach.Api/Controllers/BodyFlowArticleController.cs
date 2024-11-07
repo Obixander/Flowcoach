@@ -10,11 +10,25 @@ namespace FlowCoach.Api.Controllers
     public class BodyFlowArticleController(IGenericRepository<BodyFlowArticle> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(BodyFlowArticle bodyFlowArticle)
+        public async Task<ActionResult> AddBy(BodyFlowArticle bodyFlowArticle)
         {
             try
             {
                 await Context.Add(bodyFlowArticle);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(BodyFlowArticle entity)
+        {
+            try
+            {
+                await Context.Update(entity);
                 return Ok();
             }
             catch (Exception ex)

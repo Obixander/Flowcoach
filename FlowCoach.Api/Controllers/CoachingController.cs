@@ -10,7 +10,7 @@ namespace FlowCoach.Api.Controllers
     public class CoachingController(IGenericRepository<Coaching> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(Coaching coaching)
+        public async Task<ActionResult> AddBy(Coaching coaching)
         {
             try
             {
@@ -22,6 +22,21 @@ namespace FlowCoach.Api.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(Coaching entity)
+        {
+            try
+            {
+                await Context.Update(entity);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
 
         [HttpDelete]
         public async Task<ActionResult> Delete(Coaching entity)

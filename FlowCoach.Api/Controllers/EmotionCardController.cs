@@ -10,11 +10,25 @@ namespace FlowCoach.Api.Controllers
     public class EmotionCardController(IGenericRepository<EmotionCard> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(EmotionCard emotionCard)
+        public async Task<ActionResult> AddBy(EmotionCard emotionCard)
         {
             try
             {
                 await Context.Add(emotionCard);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(EmotionCard entity)
+        {
+            try
+            {
+                await Context.Update(entity);
                 return Ok();
             }
             catch (Exception ex)

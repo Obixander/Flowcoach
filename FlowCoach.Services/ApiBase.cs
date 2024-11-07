@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,14 +19,22 @@ namespace FlowCoach.Services
             var uriPath = generic.Split('.');
             baseUri = new Uri($"https://localhost:7228/api/{uriPath[uriPath.Length - 1]}/");
         }
-
-        protected async Task<HttpResponseMessage> ExecuteHttp(string url, string method, T? parameter = null )
+        /// <summary>
+        /// A method used for executting a http request to an api
+        /// </summary>
+        /// <param name="url">This Parameter has to be specified as a controller method name like "GetAll" in "User/GetAll"</param>
+        /// <param name="method">This Parameter has to be specified as a Http Method 
+        /// Currently Supported methods are "GET" "POST" "PUT" "DELETE"</param>
+        /// <param name="parameter">This Parameter is optional where an entity can be specified to send in a post,put,delete</param>
+        /// <param name="id">This Parameter is optional to be used in a GetBy method</param>
+        /// <returns>A HttpResponseMessage</returns>
+        protected async Task<HttpResponseMessage> ExecuteHttp(string url, string method, T? parameter = null, int id = -1)
         {
             try
             {
                 UriBuilder uriBuilder = new(baseUri + url);
 
-                if (method == "GET" && parameter != null)
+                if (method == "GET" && parameter != null && id != -1)
                 {
                     uriBuilder.Query = $"id={parameter}";
                 }
@@ -53,10 +62,7 @@ namespace FlowCoach.Services
                         break;
                     default:
                         throw new Exception("Invalid Method");
-
                 }
-                
-
                 if (!response.IsSuccessStatusCode)
                 {
                     //List<Entities.Task> tasks = new List<Entities.Task>();
@@ -91,24 +97,76 @@ namespace FlowCoach.Services
             }
         }
 
-        public virtual async Task<T> GetBy(int id)
+        public virtual async Task<T> GetBy(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await ExecuteHttp($"GetBy", "GET", id: Id);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadFromJsonAsync<T>();
+
+                    return result;
+                }
+                throw new Exception("Null Reference has occuried");
+            }
+            catch
+            {
+                throw;
+            }
         }
 
-        public virtual async Task Post(T Entity)
+        public virtual async Task<T> Post(T Entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await ExecuteHttp($"AddBy", "POST", Entity);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadFromJsonAsync<T>();
+
+                    return result;
+                }
+                throw new Exception("Null Reference has occuried");
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public virtual async Task Put(T Entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await ExecuteHttp($"Update", "PUT", Entity);
+                if (response.IsSuccessStatusCode)
+                {
+                    return;
+                }
+                throw new Exception("Null Reference has occuried");
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public virtual async Task Delete(T Entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var response = await ExecuteHttp($"Delete", "DELETE", Entity);
+                if (response.IsSuccessStatusCode)
+                {
+                    return;
+                }
+                throw new Exception("Null Reference has occuried");
+            }
+            catch
+            {
+                throw;
+            }
         }
 
     }

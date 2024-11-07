@@ -11,7 +11,7 @@ namespace FlowCoach.Api.Controllers
     public class QuestionController(IQuestionRepository questionRepository) : ControllerBase
     {
         [HttpPost]
-        public async void AddBy(Question entity)
+        public async Task AddBy(Question entity)
         {
             try
             {
@@ -23,7 +23,7 @@ namespace FlowCoach.Api.Controllers
             }
         }
         [HttpPut]
-        public async void Update(Question entity)
+        public async Task Update(Question entity)
         {
             try
             {
@@ -35,7 +35,7 @@ namespace FlowCoach.Api.Controllers
             }
         }
         [HttpDelete]
-        public async void Delete(Question entity)
+        public async Task Delete(Question entity)
         {
             try
             {
@@ -48,7 +48,7 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpDelete]
         [Route(nameof(DeleteAt))]
-        public async void DeleteAt(int id)
+        public async Task DeleteAt(int id)
         {
             try
             {

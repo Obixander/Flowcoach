@@ -11,7 +11,7 @@ namespace FlowCoach.Api.Controllers
     public class SelfCareCardController(IGenericRepository<SelfCareCard> Context) : ControllerBase
     {
         [HttpPost]
-        public async Task<ActionResult> Add(SelfCareCard selfCareCard)
+        public async Task<ActionResult> AddBy(SelfCareCard selfCareCard)
         {
             try
             {
@@ -36,6 +36,21 @@ namespace FlowCoach.Api.Controllers
                 return BadRequest(ex);
             }
         }
+
+        [HttpPut]
+        public async Task<ActionResult> Update(SelfCareCard entity)
+        {
+            try
+            {
+                await Context.Update(entity);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
 
         [HttpDelete]
         [Route(nameof(DeleteAt))]
