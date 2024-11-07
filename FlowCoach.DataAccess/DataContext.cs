@@ -43,7 +43,6 @@ namespace FlowCoach.DataAccess
                 .Property(c => c.CardId)
                 .HasColumnName("FlowCoachCardId");
             modelBuilder.Entity<FlowCoachCard>().HasKey(c => c.CardId);
-
         }
 
 

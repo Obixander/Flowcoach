@@ -14,6 +14,10 @@ namespace FlowCoach.Entities
         private QuestionType questionType;
         private bool isSaveAble;
         private string? answer;
+        private int? coachingId;
+        private int? selfCareArticleId;
+        private Coaching? coaching;
+        private SelfCareArticle? selfCareArticle;
 
         public int QuestionId
         {
@@ -55,7 +59,8 @@ namespace FlowCoach.Entities
             {
                 if (questionType == QuestionType.Current || questionType == QuestionType.Barrier)
                 {
-                    return;
+                    isSaveAble = false;
+
                 }
                 if (value != isSaveAble)
                     isSaveAble = value;
@@ -92,6 +97,11 @@ namespace FlowCoach.Entities
                 }
             }
         }
+
+        public int? CoachingId { get => coachingId; set => coachingId = value; }
+        public int? SelfCareArticleId { get => selfCareArticleId; set => selfCareArticleId = value; }
+        public Coaching? Coaching { get => coaching; set => coaching = value; }
+        public SelfCareArticle? SelfCareArticle { get => selfCareArticle; set => selfCareArticle = value; }
     }
 
     public enum QuestionType
