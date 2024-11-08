@@ -32,7 +32,7 @@ else
 
     protected async override void OnInitialized()
     {
-        await Hub.StartConnectionAsync();
+        // await Hub.StartConnectionAsync();
         emotionCards = await Hub.HubConnection.InvokeAsync<List<EmotionCard>>(nameof(IFlowCoachHub.GetEmotionCardsAsync));
 
         StateHasChanged();

@@ -60,7 +60,7 @@ namespace FlowCoach.Entities
                 if (questionType == QuestionType.Current || questionType == QuestionType.Barrier)
                 {
                     isSaveAble = false;
-
+                    return;
                 }
                 if (value != isSaveAble)
                     isSaveAble = value;

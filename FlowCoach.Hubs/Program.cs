@@ -1,4 +1,7 @@
+using FlowCoach.Entities;
 using FlowCoach.Hubs.Hubs;
+using FlowCoach.Services;
+using FlowCoach.Services.Interfaces;
 
 namespace FlowCoach.Hubs
 {
@@ -11,7 +14,8 @@ namespace FlowCoach.Hubs
             // Add services to the container.
 
             builder.Services.AddControllers();
-            builder.Services.AddSignalR();
+            builder.Services.AddSignalR(options => { options.EnableDetailedErrors = true; });
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();

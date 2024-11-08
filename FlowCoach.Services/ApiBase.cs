@@ -1,4 +1,5 @@
 ﻿using FlowCoach.Entities;
+using FlowCoach.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace FlowCoach.Services
 {
-    public abstract class ApiBase<T> where T : class
+    public abstract class ApiBase<T> : IApiBase<T> where T : class
     {
         protected Uri baseUri;
         protected ApiBase() //Note this will only work if the correct part of the name is only two "." away
@@ -28,15 +29,15 @@ namespace FlowCoach.Services
         /// <param name="parameter">This Parameter is optional where an entity can be specified to send in a post,put,delete</param>
         /// <param name="id">This Parameter is optional to be used in a GetBy method</param>
         /// <returns>A HttpResponseMessage</returns>
-        protected async Task<HttpResponseMessage> ExecuteHttp(string url, string method, T? parameter = null, int id = -1)
+        private async Task<HttpResponseMessage> ExecuteHttp(string url, string method, T? parameter = null, int id = -1)
         {
             try
             {
                 UriBuilder uriBuilder = new(baseUri + url);
 
-                if (method == "GET" && parameter != null && id != -1)
+                if (method == "GET" && id != -1)
                 {
-                    uriBuilder.Query = $"id={parameter}";
+                    uriBuilder.Query = $"id={id}";
                 }
 
                 HttpClientHandler handler = new HttpClientHandler()

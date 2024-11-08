@@ -22,6 +22,7 @@ namespace FlowCoach.Api.Controllers
                 return BadRequest(ex);
             }
         }
+
         [HttpPut]
         public async Task<ActionResult> Update(User entity)
         {

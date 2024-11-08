@@ -55,7 +55,8 @@ else
 }
 
 
-@code {
+@code 
+{
 
     [Parameter]
     public int Id { get; set; } //this is the id that will be used to get the coaching infomation
@@ -71,9 +72,15 @@ else
 
     protected override async void OnInitialized()
     {
-        await Hub.StartConnectionAsync();
-        Emotion = await Hub.HubConnection.InvokeAsync<Coaching>(nameof(IFlowCoachHub.GetCoachingAsyncBy), Id);
-
+        // await Hub.StartConnectionAsync();
+        try
+        {
+            Emotion = await Hub.HubConnection.InvokeAsync<Coaching>(nameof(IFlowCoachHub.GetCoachingAsyncBy), Id);        
+        }
+        catch
+        {
+            throw;
+        }
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());
         SortedQuestions.Add(new List<Question>());

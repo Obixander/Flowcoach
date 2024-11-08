@@ -7,7 +7,7 @@ namespace FlowCoach.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CoachingController(IGenericRepository<Coaching> Context) : ControllerBase
+    public class CoachingController(ICoachingRepository Context) : ControllerBase
     {
         [HttpPost]
         public async Task<ActionResult> AddBy(Coaching coaching)
@@ -81,11 +81,11 @@ namespace FlowCoach.Api.Controllers
         }
         [HttpGet]
         [Route(nameof(GetBy))]
-        public async Task<ActionResult<List<Coaching>>> GetBy(int id)
+        public async Task<ActionResult<Coaching>> GetBy(int id)
         {
             try
             {
-                return Ok(await Context.GetBy(id));
+                return await Context.GetByAsync(id);
             }
             catch (Exception ex)
             {

@@ -23,6 +23,7 @@ namespace FlowCoach.Api
 
             builder.Services.AddScoped<IQuestionRepository, QuestionRepository>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ICoachingRepository, CoachingRepository>();
 
             builder.Services.AddScoped<IGenericRepository<BodyFlowArticle>, GenericRepository<BodyFlowArticle>>();
             builder.Services.AddScoped<IGenericRepository<BodyFlowCard>, GenericRepository<BodyFlowCard>>();

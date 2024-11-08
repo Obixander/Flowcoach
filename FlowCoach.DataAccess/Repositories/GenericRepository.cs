@@ -67,7 +67,7 @@ namespace FlowCoach.DataAccess.Repositories
         {
             try
             {
-                return await context.FindAsync<T>(id) ?? throw new Exception();
+                return await context.Set<T>().FindAsync(id) ?? throw new Exception();
             }
             catch
             {

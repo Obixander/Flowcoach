@@ -17,6 +17,8 @@ namespace FlowCoach.UserFrontend
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton(new SignalRService("https://localhost:7003/flowcoachhub"));
             
+            
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
