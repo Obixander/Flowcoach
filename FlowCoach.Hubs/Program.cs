@@ -1,7 +1,6 @@
 using FlowCoach.Entities;
 using FlowCoach.Hubs.Hubs;
 using FlowCoach.Services;
-using FlowCoach.Services.Interfaces;
 
 namespace FlowCoach.Hubs
 {

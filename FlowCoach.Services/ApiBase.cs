@@ -1,5 +1,4 @@
 ﻿using FlowCoach.Entities;
-using FlowCoach.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FlowCoach.Services
 {
-    public abstract class ApiBase<T> : IApiBase<T> where T : class
+    public abstract class ApiBase<T> where T : class
     {
         protected Uri baseUri;
         protected ApiBase() //Note this will only work if the correct part of the name is only two "." away
