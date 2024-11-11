@@ -22,6 +22,7 @@ namespace FlowCoach.Entities
                 {
                     if (value != bodyFlowArticleId)
                         bodyFlowArticleId = value;
+
                 }
                 else
                 {
