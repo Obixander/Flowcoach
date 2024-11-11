@@ -4,7 +4,8 @@ using FlowCoach.DataAccess.Interfaces;
 using FlowCoach.DataAccess.Repositories;
 using FlowCoach.Entities;
 using Microsoft.EntityFrameworkCore;
-
+using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 namespace FlowCoach.Api
 {
     public class Program
@@ -35,8 +36,15 @@ namespace FlowCoach.Api
             builder.Services.AddScoped<IGenericRepository<SelfCareArticle>, GenericRepository<SelfCareArticle>>();
             builder.Services.AddScoped<IGenericRepository<SelfCareCard>, GenericRepository<SelfCareCard>>();
 
-            builder.Services.AddControllers();
+            builder.Services.AddControllers().AddJsonOptions(x =>
+            x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
+            builder.Services.AddControllers()
+            .AddNewtonsoftJson(options =>
+            {
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                options.SerializerSettings.NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+            });
             var app = builder.Build();
             
             // Configure the HTTP request pipeline.

@@ -1,4 +1,5 @@
 ﻿using FlowCoach.DataAccess.Interfaces;
+using FlowCoach.DataAccess.Migrations;
 using FlowCoach.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;

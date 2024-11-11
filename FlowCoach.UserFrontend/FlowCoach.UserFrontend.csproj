@@ -28,6 +28,7 @@
     <ProjectReference Include="..\FlowCoach.Common\FlowCoach.Common.csproj" />
     <ProjectReference Include="..\FlowCoach.Components\ComponentLibrary.csproj" />
     <ProjectReference Include="..\FlowCoach.Entities\FlowCoach.Entities.csproj" />
+    <ProjectReference Include="..\FlowCoach.Services\FlowCoach.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

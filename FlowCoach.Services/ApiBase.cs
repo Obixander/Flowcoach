@@ -1,4 +1,5 @@
 ﻿using FlowCoach.Entities;
+using FlowCoach.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,19 +7,22 @@ using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FlowCoach.Services
 {
-    public abstract class ApiBase<T> where T : class
+    public class ApiBase<T> : IApiBase<T> where T : class
     {
         protected Uri baseUri;
-        protected ApiBase() //Note this will only work if the correct part of the name is only two "." away
+        public ApiBase() //Note this will only work if the correct part of the name is only two "." away
         {
             string generic = typeof(T).ToString();
             var uriPath = generic.Split('.');
             baseUri = new Uri($"https://localhost:7228/api/{uriPath[uriPath.Length - 1]}/");
+            Console.WriteLine($"Constructed baseUri: {baseUri}");
         }
+        
         /// <summary>
         /// A method used for executting a http request to an api
         /// </summary>
@@ -44,10 +48,11 @@ namespace FlowCoach.Services
                     ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
                 };
                 using HttpClient client = new(handler);
-                HttpResponseMessage response = null; ;
+                HttpResponseMessage response = null;
                 switch (method)
                 {
                     case "GET":
+                        Console.WriteLine(uriBuilder.Uri);
                          response = await client.GetAsync(uriBuilder.Uri);
                         break;
                     case "POST":
@@ -86,7 +91,6 @@ namespace FlowCoach.Services
                 {
 
                     var result = await response.Content.ReadFromJsonAsync<IEnumerable<T>>();
-
                     return result;
                 }
                 throw new Exception("Null Reference has occuried");
