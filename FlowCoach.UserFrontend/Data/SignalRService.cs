@@ -12,18 +12,12 @@ namespace FlowCoach.UserFrontend.Data
                 .WithUrl(hubUrl)
                 .Build();
         }
-        public SignalRService()
-        {
-            
-        }
 
         public async Task StartConnectionAsync()
         {
             if (_hubConnection.State == HubConnectionState.Disconnected)
             {
-              
                 await _hubConnection.StartAsync();
-     
             }
   
         }
