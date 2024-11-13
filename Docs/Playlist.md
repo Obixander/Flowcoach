@@ -15,4 +15,4 @@
 1. present the case from the customer. Talk about the meetings and the changing requirements.
 2. present the inception of the project. Talk about the ideas, brainstorming and design.
 3. present the final product with focus on the technologies used.
- Talk about Blazor (Single Page Application framework), SignalR (Http/2.0, websockets, Fallback methods in Server-Sent Events or long-polling) and shortly about Entity Framework.
+   Talk about Blazor (Single Page Application framework), SignalR (Http/2.0, websockets, Fallback methods in Server-Sent Events or long-polling) and shortly about Entity Framework.
