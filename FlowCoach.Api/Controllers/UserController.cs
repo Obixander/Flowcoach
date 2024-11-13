@@ -89,6 +89,8 @@ namespace FlowCoach.Api.Controllers
                 return BadRequest(ex);
             }
         }
+
+        //might change return type from bool to something else
         [HttpGet]
         [Route(nameof(Login))]
         public async Task<ActionResult<bool>> Login(User user)

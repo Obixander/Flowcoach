@@ -15,7 +15,7 @@ namespace FlowCoach.Services
     public class ApiBase<T> : IApiBase<T> where T : class
     {
         protected Uri baseUri;
-        public ApiBase() //Note this will only work if the correct part of the name is only two "." away
+        public ApiBase() //this is used to find the name of T
         {
             string generic = typeof(T).ToString();
             var uriPath = generic.Split('.');
@@ -24,7 +24,7 @@ namespace FlowCoach.Services
         }
         
         /// <summary>
-        /// A method used for executting a http request to an api
+        /// A method used for executting a http request to an api based on the parameters
         /// </summary>
         /// <param name="url">This Parameter has to be specified as a controller method name like "GetAll" in "User/GetAll"</param>
         /// <param name="method">This Parameter has to be specified as a Http Method 
@@ -38,6 +38,7 @@ namespace FlowCoach.Services
             {
                 UriBuilder uriBuilder = new(baseUri + url);
 
+                //this is used for the GetBy method as this allows me to both do getBy and getAll in one method
                 if (method == "GET" && id != -1)
                 {
                     uriBuilder.Query = $"id={id}";
@@ -48,7 +49,7 @@ namespace FlowCoach.Services
                     ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => { return true; }
                 };
                 using HttpClient client = new(handler);
-                HttpResponseMessage response = null;
+                HttpResponseMessage response = null; //is used later on
                 switch (method)
                 {
                     case "GET":
@@ -61,7 +62,7 @@ namespace FlowCoach.Services
                     case "PUT":
                         response = await client.PutAsJsonAsync(uriBuilder.Uri, parameter);
                         break;
-                    case "DELETE":
+                    case "DELETE": //this wont work most likely and is not tested yet 
                         uriBuilder.Query = $"id={parameter}";
                         response = await client.DeleteAsync(uriBuilder.Uri);
                         break;
@@ -70,8 +71,7 @@ namespace FlowCoach.Services
                 }
                 if (!response.IsSuccessStatusCode)
                 {
-                    //List<Entities.Task> tasks = new List<Entities.Task>();
-                    //tasks = await response.Content.ReadFromJsonAsync<List<Entities.Task>>();
+                    Console.WriteLine($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                     throw new Exception($"Error: {response.StatusCode} - {response.ReasonPhrase}");
                 }
                 return response;
@@ -87,9 +87,8 @@ namespace FlowCoach.Services
             try
             {
                 var response = await ExecuteHttp($"GetAll", "GET");
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode && response.Content != null)
                 {
-
                     var result = await response.Content.ReadFromJsonAsync<IEnumerable<T>>();
                     return result;
                 }
@@ -106,7 +105,7 @@ namespace FlowCoach.Services
             try
             {
                 var response = await ExecuteHttp($"GetBy", "GET", id: Id);
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode && response.Content != null)
                 {
                     var result = await response.Content.ReadFromJsonAsync<T>();
 
@@ -125,7 +124,7 @@ namespace FlowCoach.Services
             try
             {
                 var response = await ExecuteHttp($"AddBy", "POST", Entity);
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode && response.Content != null)
                 {
                     var result = await response.Content.ReadFromJsonAsync<T>();
 
@@ -144,7 +143,7 @@ namespace FlowCoach.Services
             try
             {
                 var response = await ExecuteHttp($"Update", "PUT", Entity);
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode && response.Content != null)
                 {
                     return;
                 }
@@ -161,7 +160,7 @@ namespace FlowCoach.Services
             try
             {
                 var response = await ExecuteHttp($"Delete", "DELETE", Entity);
-                if (response.IsSuccessStatusCode)
+                if (response.IsSuccessStatusCode && response.Content != null)
                 {
                     return;
                 }

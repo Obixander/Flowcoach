@@ -19,7 +19,6 @@ namespace FlowCoach.UserFrontend
             builder.Services.AddRazorPages();
             builder.Services.AddServerSideBlazor();
             builder.Services.AddSingleton(new SignalRService("https://localhost:7003/flowcoachhub"));
-            builder.Services.AddScoped<IFlowcoachCardService, FlowcoachCardService>();
 
             var app = builder.Build();
 

@@ -4,12 +4,12 @@ namespace FlowCoach.Common
 {
     public interface IFlowCoachHub
     {
-        public Task<List<FlowCoachCard>> GetFlowCoachCards(); //async
-        public Task<SelfCareArticle> GetArticleAsync(int articleId); //async
-        public Task<List<SelfCareCard>> GetSelfCareCardsAsync(); //async
-        public Task<List<EmotionCard>> GetEmotionCardsAsync(); //async
-        public Task<Coaching> GetCoachingAsyncBy(int id); //async
-        public Task<List<BodyFlowCard>> GetBodyflowCards(); //async
-        public Task<BodyFlowArticle> GetArticleBy(int id); //async
+        Task<List<FlowCoachCard>> GetFlowCoachCards(); //async
+        Task<SelfCareArticle> GetArticleAsync(int articleId); //async
+        Task<List<SelfCareCard>> GetSelfCareCardsAsync(); //async
+        Task<List<EmotionCard>> GetEmotionCardsAsync(); //async
+        Task<Coaching> GetCoachingAsyncBy(int id); //async
+        Task<List<BodyFlowCard>> GetBodyflowCards(); //async
+        Task<BodyFlowArticle> GetArticleBy(int id); //async
     }
 }

@@ -39,7 +39,7 @@ namespace FlowCoach.Api
             builder.Services.AddControllers().AddJsonOptions(x =>
             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve);
 
-            builder.Services.AddControllers()
+            builder.Services.AddControllers() //fixes some ef issues somehow?? (cycle depth of 32 or more)
             .AddNewtonsoftJson(options =>
             {
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;

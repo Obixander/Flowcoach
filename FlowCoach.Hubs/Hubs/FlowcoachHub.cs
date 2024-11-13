@@ -17,7 +17,7 @@ namespace FlowCoach.Hubs.Hubs
         IApiBase<SelfCareArticle> selfCareArticleService,
         IApiBase<SelfCareCard> selfCareCardService,
         IApiBase<User> userService,
-        IFlowcoachCardService flowCoachCardService
+        IApiBase<FlowCoachCard> flowCoachCardService
         ) : Hub, IFlowCoachHub
     {
         public async Task<List<FlowCoachCard>> GetFlowCoachCards()

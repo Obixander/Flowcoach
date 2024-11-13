@@ -19,7 +19,7 @@ namespace FlowCoach.Hubs
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.AddScoped<IFlowcoachCardService, FlowcoachCardService> ();
+            builder.Services.AddScoped<IApiBase<FlowCoachCard>, ApiBase<FlowCoachCard>> ();
             builder.Services.AddScoped<IApiBase<BodyFlowArticle>, ApiBase<BodyFlowArticle>>();
             builder.Services.AddScoped<IApiBase<BodyFlowCard>, ApiBase<BodyFlowCard>>();
             builder.Services.AddScoped<IApiBase<Coaching>, ApiBase<Coaching>>();

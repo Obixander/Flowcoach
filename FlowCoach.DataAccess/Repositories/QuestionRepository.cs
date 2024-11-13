@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace FlowCoach.DataAccess.Repositories
 {
     public class QuestionRepository(DataContext context) : GenericRepository<Question>(context),IQuestionRepository
-    {
+    { //These methods might not be used for now but that might change
         public async Task<IEnumerable<Question>> GetAllQuestionsByType(QuestionType questionType)
         {
             try
